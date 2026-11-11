@@ -1,0 +1,325 @@
+# Configuración del panel de edición (Decap CMS) — https://decapcms.org/docs/
+# Cada «file» de abajo es un formulario del panel y corresponde a un fichero de /contenido.
+
+backend:
+  name: github
+  repo: Claudiampg/claudia-paredes-web
+  branch: main
+  commit_messages:
+    update: "Panel: cambios en {{slug}}"
+    uploadMedia: "Panel: sube {{path}}"
+    deleteMedia: "Panel: borra {{path}}"
+
+local_backend: true   # solo para probar en el propio ordenador con «npx decap-server»
+locale: es
+editor:
+  preview: false
+media_folder: img
+public_folder: /img
+
+collections:
+  - name: paginas
+    label: Páginas de la web
+    description: "Elige la página que quieres cambiar. Al pulsar «Publicar», la web se actualiza en uno o dos minutos. Para poner algo en cursiva, escríbelo entre *asteriscos*."
+    format: json
+    editor: { preview: false }
+    files:
+
+      # ------------------------------------------------------------ PORTADA
+      - label: Portada (inicio)
+        name: inicio
+        file: contenido/inicio.json
+        fields:
+          - { label: Texto pequeño sobre el nombre, name: antetitulo, widget: string }
+          - { label: Nombre (una línea por renglón), name: titulo, widget: text, hint: "Lo que va entre *asteriscos* sale en cursiva y en color." }
+          - { label: Presentación, name: presentacion, widget: markdown, buttons: [bold, italic, link], editor_components: [], modes: [rich_text] }
+          - { label: Línea de novedad, name: novedad, widget: string, required: false, hint: "Aparece bajo la presentación. Déjalo vacío para ocultarla." }
+          - { label: Foto, name: foto, widget: image }
+          - { label: Descripción de la foto (para personas ciegas y buscadores), name: foto_alt, widget: string }
+          - label: Prensa destacada en la portada
+            name: prensa
+            widget: list
+            label_singular: noticia
+            add_to_top: true
+            collapsed: true
+            summary: "{{fields.medio}} — {{fields.titulo}}"
+            hint: "Recomendado: tres noticias. El resto de la prensa se edita en la página Prensa."
+            fields:
+              - { label: Medio, name: medio, widget: string }
+              - { label: Título, name: titulo, widget: string }
+              - { label: Fecha, name: fecha, widget: string, required: false, hint: "Por ejemplo: Abril 2026" }
+              - { label: Enlace, name: enlace, widget: string }
+          - { label: Texto de la sección Contacto, name: contacto_texto, widget: string }
+          - { label: "Buscadores: título de la página", name: seo_titulo, widget: string }
+          - { label: "Buscadores: descripción", name: seo_descripcion, widget: text }
+
+      # ------------------------------------------------------------ SOBRE
+      - label: Sobre Claudia
+        name: sobre
+        file: contenido/sobre.json
+        fields:
+          - { label: Texto pequeño sobre el título, name: antetitulo, widget: string }
+          - { label: Título (una línea por renglón), name: titulo, widget: text, hint: "Lo que va entre *asteriscos* sale en cursiva y en color." }
+          - { label: Entrada, name: entrada, widget: markdown, buttons: [bold, italic, link], editor_components: [], modes: [rich_text] }
+          - { label: Foto, name: foto, widget: image }
+          - { label: Descripción de la foto, name: foto_alt, widget: string }
+          - { label: Su historia, name: historia, widget: markdown, buttons: [bold, italic, link], editor_components: [], modes: [rich_text], hint: "Separa los párrafos con una línea en blanco. El primero empieza con letra capital." }
+          - label: Datos (columna lateral)
+            name: datos
+            widget: list
+            label_singular: dato
+            collapsed: true
+            summary: "{{fields.etiqueta}}: {{fields.valor}}"
+            fields:
+              - { label: Etiqueta, name: etiqueta, widget: string }
+              - { label: Valor, name: valor, widget: string }
+          - { label: Cita, name: cita, widget: text, required: false, hint: "Déjalo vacío para ocultar la cita." }
+          - { label: Autoría de la cita, name: cita_fuente, widget: string, required: false }
+          - label: Recorrido
+            name: recorrido
+            widget: list
+            label_singular: hito
+            collapsed: true
+            summary: "{{fields.cuando}} — {{fields.texto}}"
+            hint: "El último hito aparece resaltado."
+            fields:
+              - { label: Cuándo, name: cuando, widget: string }
+              - { label: Texto, name: texto, widget: text, hint: "Para un enlace: [texto](obra.html#novela)" }
+          - { label: "Su escritura: frase destacada", name: escritura_frase, widget: string }
+          - { label: "Su escritura: texto", name: escritura_texto, widget: markdown, buttons: [bold, italic, link], editor_components: [], modes: [rich_text] }
+          - { label: Temas que recorren su obra, name: temas, widget: list, field: { label: Tema, name: tema, widget: string } }
+          - { label: Formación y docencia, name: formacion, widget: list, field: { label: Línea, name: linea, widget: string } }
+          - { label: "Buscadores: título de la página", name: seo_titulo, widget: string }
+          - { label: "Buscadores: descripción", name: seo_descripcion, widget: text }
+
+      # ------------------------------------------------------------ TALLERES
+      - label: Talleres
+        name: talleres
+        file: contenido/talleres.json
+        fields:
+          - { label: "Mostrar aviso de «contenido de ejemplo»", name: contenido_de_ejemplo, widget: boolean, default: false, hint: "Desactívalo cuando los talleres y las fechas sean los reales." }
+          - label: Próximas fechas
+            name: fechas
+            widget: list
+            label_singular: fecha
+            add_to_top: true
+            collapsed: true
+            summary: "{{fields.fecha}} — {{fields.taller}}"
+            hint: "Aparecen en el calendario de la portada y de Talleres. Las fechas pasadas se ocultan solas, así que no hace falta borrarlas."
+            fields:
+              - { label: Fecha, name: fecha, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
+              - { label: Taller, name: taller, widget: string }
+              - { label: Modalidad y lugar, name: lugar, widget: string, hint: "Por ejemplo: Presencial · Librería Book Vivant, Lima" }
+          - { label: Texto pequeño sobre el título, name: antetitulo, widget: string }
+          - { label: Título (una línea por renglón), name: titulo, widget: text }
+          - { label: Entrada, name: entrada, widget: markdown, buttons: [bold, italic, link], editor_components: [], modes: [rich_text] }
+          - label: Todos los talleres
+            name: catalogo
+            widget: list
+            label_singular: taller
+            collapsed: true
+            summary: "{{fields.titulo}}"
+            hint: "Cada taller también aparece como opción en el formulario «Llévalo a tu espacio»."
+            fields:
+              - { label: Nombre del taller, name: titulo, widget: string }
+              - { label: Descripción, name: descripcion, widget: markdown, buttons: [bold, italic, link], editor_components: [], modes: [rich_text] }
+              - { label: Modalidad, name: modalidad, widget: string, required: false }
+          - { label: "Metodología: entrada", name: metodologia_entrada, widget: text }
+          - label: "Metodología: pasos"
+            name: metodologia
+            widget: list
+            label_singular: paso
+            collapsed: true
+            summary: "{{fields.titulo}}"
+            fields:
+              - { label: Título, name: titulo, widget: string }
+              - { label: Texto, name: texto, widget: text }
+          - { label: "Formulario «Quiero asistir»: texto", name: asistir_texto, widget: text }
+          - { label: "Formulario «Llévalo a tu espacio»: texto", name: contratar_texto, widget: text }
+          - { label: "Buscadores: título de la página", name: seo_titulo, widget: string }
+          - { label: "Buscadores: descripción", name: seo_descripcion, widget: text }
+
+      # ------------------------------------------------------------ LIBROS
+      - label: Libros
+        name: libros
+        file: contenido/libros.json
+        fields:
+          - label: Libros
+            name: libros
+            widget: list
+            label_singular: libro
+            add_to_top: true
+            collapsed: true
+            summary: "{{fields.anio}} · {{fields.titulo}}"
+            hint: "Ordénalos del más reciente al más antiguo (arrastrando). El libro marcado como «destacado» aparece en grande en la portada y en Obra."
+            fields:
+              - { label: Título, name: titulo, widget: string }
+              - { label: Libro destacado, name: destacado, widget: boolean, default: false, hint: "Marca solo uno." }
+              - { label: Identificador para enlaces, name: ancla, widget: string, pattern: ["^[a-z0-9-]+$", "Solo minúsculas sin tildes, números y guiones"], hint: "Por ejemplo: novela, un-lugar, aguas. Si lo cambias, revisa los enlaces que apuntan a él." }
+              - { label: Portada, name: portada, widget: image }
+              - { label: Subtítulo, name: subtitulo, widget: string, required: false, hint: "Por ejemplo: Seis cuentos" }
+              - { label: Editorial (completa), name: editorial, widget: string }
+              - { label: Editorial (nombre corto), name: editorial_corta, widget: string, required: false }
+              - { label: Ciudad, name: ciudad, widget: string, required: false }
+              - { label: Año, name: anio, widget: string }
+              - { label: Género, name: genero, widget: string, required: false }
+              - { label: ISBN, name: isbn, widget: string, required: false }
+              - { label: Resumen corto (portada), name: resumen, widget: markdown, buttons: [bold, italic, link], editor_components: [], modes: [rich_text] }
+              - { label: Sinopsis (página Obra), name: sinopsis, widget: markdown, buttons: [bold, italic, link], editor_components: [], modes: [rich_text] }
+              - { label: Nota (edición, ferias…), name: nota, widget: text, required: false }
+              - { label: Temas, name: temas, widget: list, required: false, field: { label: Tema, name: tema, widget: string } }
+              - { label: Enlace de compra, name: enlace_compra, widget: string, required: false, hint: "Si lo dejas vacío, el botón lleva a «Dónde conseguirlo» en Contacto." }
+              - { label: Texto del botón de compra, name: texto_compra, widget: string, required: false, hint: "Por ejemplo: Comprar en Penguin Libros" }
+              - { label: "Solo libro destacado: título en dos líneas", name: titulo_destacado, widget: text, required: false, hint: "Lo que va entre *asteriscos* sale en cursiva." }
+              - { label: "Solo libro destacado: etiqueta", name: etiqueta, widget: string, required: false, hint: "Por ejemplo: Novedad · Novela · Lumen · 2026" }
+
+      # ------------------------------------------------------------ OBRA
+      - label: Obra (resto de la página)
+        name: obra
+        file: contenido/obra.json
+        fields:
+          - { label: Texto pequeño sobre el título, name: antetitulo, widget: string }
+          - { label: Título, name: titulo, widget: string }
+          - { label: Cita, name: cita, widget: text, required: false, hint: "Déjalo vacío para ocultar la cita." }
+          - { label: Autoría de la cita, name: cita_fuente, widget: string, required: false }
+          - { label: "Título de «También ha publicado»", name: otros_titulo, widget: string }
+          - label: También ha publicado
+            name: otros
+            widget: list
+            label_singular: publicación
+            collapsed: true
+            summary: "{{fields.tipo}}"
+            fields:
+              - { label: Tipo, name: tipo, widget: string }
+              - { label: Detalle, name: detalle, widget: string }
+          - { label: Invitación final (una línea por renglón), name: invitacion, widget: text }
+          - { label: "Buscadores: título de la página", name: seo_titulo, widget: string }
+          - { label: "Buscadores: descripción", name: seo_descripcion, widget: text }
+
+      # ------------------------------------------------------------ PRENSA
+      - label: Prensa
+        name: prensa
+        file: contenido/prensa.json
+        fields:
+          - { label: Texto pequeño sobre el título, name: antetitulo, widget: string }
+          - { label: Título, name: titulo, widget: string }
+          - { label: Entrada, name: entrada, widget: markdown, buttons: [bold, italic, link], editor_components: [], modes: [rich_text] }
+          - label: Crítica
+            name: criticas
+            widget: list
+            label_singular: crítica
+            add_to_top: true
+            collapsed: true
+            summary: "{{fields.medio}} — {{fields.titulo}}"
+            fields:
+              - { label: Medio, name: medio, widget: string }
+              - { label: "Detalle (tipo · autor · fecha)", name: detalle, widget: string }
+              - { label: Título, name: titulo, widget: string }
+              - { label: Resumen, name: texto, widget: markdown, buttons: [bold, italic, link], editor_components: [], modes: [rich_text] }
+              - { label: Enlace, name: enlace, widget: string, required: false }
+              - { label: Texto del enlace, name: texto_enlace, widget: string, required: false, default: "Leer →" }
+              - { label: Destacar (tarjeta oscura grande), name: principal, widget: boolean, default: false }
+          - { label: Cita destacada sobre sus libros, name: cita_destacada, widget: markdown, buttons: [bold, italic, link], editor_components: [], modes: [rich_text], required: false }
+          - { label: Autoría de la cita destacada, name: cita_destacada_autor, widget: string, required: false }
+          - label: Lo que dicen de sus libros
+            name: opiniones
+            widget: list
+            label_singular: opinión
+            collapsed: true
+            summary: "{{fields.autor}}"
+            fields:
+              - { label: Autor o autora, name: autor, widget: string }
+              - { label: Sobre qué libro, name: sobre, widget: string, required: false, hint: "Por ejemplo: sobre *Aguas*" }
+              - { label: Cita, name: texto, widget: markdown, buttons: [bold, italic, link], editor_components: [], modes: [rich_text], required: false }
+              - { label: Enlace, name: enlace, widget: string, required: false }
+          - label: Entrevistas
+            name: entrevistas
+            widget: list
+            label_singular: entrevista
+            add_to_top: true
+            collapsed: true
+            summary: "{{fields.fecha}} · {{fields.medio}}"
+            hint: "De la más reciente a la más antigua."
+            fields:
+              - { label: Medio, name: medio, widget: string }
+              - { label: Título, name: titulo, widget: string }
+              - { label: Fecha, name: fecha, widget: string, required: false, hint: "Por ejemplo: Abril 2026" }
+              - { label: Enlace, name: enlace, widget: string }
+          - label: Opinión y apariciones
+            name: apariciones
+            widget: list
+            label_singular: aparición
+            add_to_top: true
+            collapsed: true
+            summary: "{{fields.fecha}} · {{fields.medio}}"
+            fields:
+              - { label: Medio o evento, name: medio, widget: string }
+              - { label: Título, name: titulo, widget: string }
+              - { label: Fecha, name: fecha, widget: string, required: false }
+              - { label: Enlace, name: enlace, widget: string }
+          - { label: Biografía corta, name: bio_corta, widget: markdown, buttons: [bold, italic, link], editor_components: [], modes: [rich_text] }
+          - { label: Biografía larga, name: bio_larga, widget: markdown, buttons: [bold, italic, link], editor_components: [], modes: [rich_text] }
+          - label: Imágenes para descargar
+            name: descargas
+            widget: list
+            label_singular: imagen
+            collapsed: true
+            summary: "{{fields.nombre}}"
+            hint: "Sube las imágenes en alta resolución: el tamaño se calcula solo."
+            fields:
+              - { label: Nombre, name: nombre, widget: string }
+              - { label: Imagen, name: imagen, widget: image }
+          - { label: Invitación final (una línea por renglón), name: invitacion, widget: text }
+          - { label: "Buscadores: título de la página", name: seo_titulo, widget: string }
+          - { label: "Buscadores: descripción", name: seo_descripcion, widget: text }
+
+      # ------------------------------------------------------------ CONTACTO
+      - label: Contacto
+        name: contacto
+        file: contenido/contacto.json
+        fields:
+          - { label: Texto pequeño sobre el título, name: antetitulo, widget: string }
+          - { label: Título, name: titulo, widget: string }
+          - { label: Entrada, name: entrada, widget: markdown, buttons: [bold, italic, link], editor_components: [], modes: [rich_text] }
+          - label: Motivos de contacto
+            name: motivos
+            widget: list
+            label_singular: motivo
+            collapsed: true
+            summary: "{{fields.titulo}}"
+            hint: "Cada motivo es una tarjeta y una opción del formulario."
+            fields:
+              - { label: Título de la tarjeta, name: titulo, widget: string }
+              - { label: Texto, name: texto, widget: text }
+              - { label: Motivo en el formulario, name: motivo, widget: string }
+              - { label: Enlace secundario (texto), name: enlace_texto, widget: string, required: false }
+              - { label: Enlace secundario (dirección), name: enlace, widget: string, required: false }
+          - label: Editoriales
+            name: editoriales
+            widget: list
+            label_singular: editorial
+            collapsed: true
+            summary: "{{fields.nombre}}"
+            fields:
+              - { label: Editorial, name: nombre, widget: string }
+              - { label: Libro, name: libro, widget: string }
+              - { label: Enlace, name: enlace, widget: string, required: false }
+          - { label: "Buscadores: título de la página", name: seo_titulo, widget: string }
+          - { label: "Buscadores: descripción", name: seo_descripcion, widget: text }
+
+  - name: ajustes
+    label: Ajustes generales
+    format: json
+    editor: { preview: false }
+    files:
+      - label: Correo, redes y nombre
+        name: ajustes
+        file: contenido/ajustes.json
+        fields:
+          - { label: Correo de contacto, name: correo, widget: string, hint: "Aparece en Contacto y Prensa. Los formularios llegan por Netlify." }
+          - { label: Mostrar aviso de «dirección provisional», name: correo_provisional, widget: boolean, default: false }
+          - { label: Instagram (enlace), name: instagram_url, widget: string }
+          - { label: Instagram (usuario), name: instagram_usuario, widget: string }
+          - { label: Nombre completo, name: nombre, widget: string }
+          - { label: Nombre en el menú, name: nombre_corto, widget: string }
+          - { label: Imagen al compartir en redes, name: imagen_compartir, widget: image }

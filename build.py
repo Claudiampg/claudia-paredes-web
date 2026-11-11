@@ -267,6 +267,13 @@ def boton_compra(libro, clase):
     return '<a href="%s" class="%s">Dónde conseguirlo</a>' % (esc(contacto_url("Libros")), clase)
 
 
+def boton_compra_2(libro, clase):
+    """Segundo enlace de compra opcional (por ejemplo, la edición en papel)."""
+    if libro.get("enlace_compra_2"):
+        return externo(libro["enlace_compra_2"], esc(libro.get("texto_compra_2") or "Comprar"), clase)
+    return ""
+
+
 def novela_destacada(en_inicio):
     l = DESTACADO
     if not l:
@@ -276,13 +283,15 @@ def novela_destacada(en_inicio):
     if en_inicio:
         textos = '<p class="featured__syn">%s</p>' % inline(l.get("resumen") or l.get("sinopsis"))
         campos = [("Editorial", l.get("editorial")), ("Género", l.get("genero")), ("ISBN", l.get("isbn"))]
-        segundo = '<a href="obra.html#%s" class="btn btn--outline-light">Ver ficha completa</a>' % esc(l.get("ancla"))
+        segundo = boton_compra_2(l, "btn btn--outline-light") or \
+            '<a href="obra.html#%s" class="btn btn--outline-light">Ver ficha completa</a>' % esc(l.get("ancla"))
     else:
         ps = parrafos(l.get("sinopsis"))
         textos = "\n        ".join('<p class="featured__syn%s">%s</p>' % (" featured__syn--second" if i else "", p)
                                    for i, p in enumerate(ps))
         campos = [("Editorial", l.get("editorial")), ("Año", l.get("anio")), ("ISBN", l.get("isbn"))]
-        segundo = '<a href="prensa.html#kit" class="btn btn--outline-light">Kit de prensa</a>'
+        segundo = boton_compra_2(l, "btn btn--outline-light") or \
+            '<a href="prensa.html#kit" class="btn btn--outline-light">Kit de prensa</a>'
     meta = "".join("<div><dt>%s</dt><dd>%s</dd></div>" % (k, esc(v)) for k, v in campos if v)
     sub = '<p class="featured__sub">%s</p>' % inline(l["subtitulo"]) if l.get("subtitulo") else ""
     badge = '<p class="featured__badge">%s</p>' % esc(l["etiqueta"]) if l.get("etiqueta") else ""

@@ -1,0 +1,4 @@
+# Netlify genera la web con build.py cada vez que hay un cambio (por ejemplo, desde el panel /admin)
+[build]
+  command = "python3 build.py"
+  publish = "_site"

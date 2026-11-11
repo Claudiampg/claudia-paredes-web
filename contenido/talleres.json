@@ -7,12 +7,14 @@
     {
       "taller": "Comienzo de taller de lectura 6 libros en 6 meses: \"A Nobelear\"",
       "fecha": "2027-01-27",
-      "lugar": "Online - Zoom"
+      "lugar": "Online - Zoom",
+      "tipo": "Taller de lectura"
     },
     {
       "fecha": "2026-11-26",
       "taller": "6 libros en 6 meses: Ay, ¿el amor? Sesión 5: In Cold Blood",
-      "lugar": "Online, Zoom"
+      "lugar": "Online, Zoom",
+      "tipo": "Taller de lectura"
     }
   ],
   "metodologia_entrada": "Se aprende a escribir escribiendo. Leemos a distintas autoras y autores, pero el enfoque es práctico: escribir, soltar la mano y mejorar con la mirada del grupo. No hace falta experiencia previa, solo ganas de explorar.",
@@ -87,6 +89,272 @@
     {
       "titulo": "Conversación y análisis",
       "texto": "Hora y media para comentar las opiniones y analizar la narrativa y los temas sociales del libro."
+    }
+  ],
+  "lectura_temporadas": [
+    {
+      "titulo": "Ay, ¿el amor?",
+      "periodo": "Julio–diciembre de 2026",
+      "horario": "Último miércoles del mes · 12:00 Lima",
+      "nota": "",
+      "libros": [
+        {
+          "fecha": "2026-08-03",
+          "libro": "Lolita",
+          "autor": "Vladimir Nabokov",
+          "pais": ""
+        },
+        {
+          "fecha": "2026-08-26",
+          "libro": "El intérprete del dolor",
+          "autor": "Jhumpa Lahiri",
+          "pais": ""
+        },
+        {
+          "fecha": "2026-09-30",
+          "libro": "Teoría de la gravedad",
+          "autor": "Leila Guerriero",
+          "pais": ""
+        },
+        {
+          "fecha": "2026-10-28",
+          "libro": "Yoga",
+          "autor": "Emmanuel Carrère",
+          "pais": ""
+        },
+        {
+          "fecha": "2026-11-25",
+          "libro": "A sangre fría",
+          "autor": "Truman Capote",
+          "pais": ""
+        },
+        {
+          "fecha": "2026-12-16",
+          "libro": "Las abuelas",
+          "autor": "Doris Lessing",
+          "pais": ""
+        }
+      ]
+    },
+    {
+      "titulo": "Volver a Lima",
+      "periodo": "Enero–junio de 2026",
+      "horario": "Último miércoles del mes · 12:00 Lima",
+      "nota": "",
+      "libros": [
+        {
+          "fecha": "2026-01-26",
+          "libro": "Conversación en La Catedral",
+          "autor": "Mario Vargas Llosa",
+          "pais": ""
+        },
+        {
+          "fecha": "2026-02-25",
+          "libro": "Geografía de la oscuridad",
+          "autor": "Katya Adaui",
+          "pais": ""
+        },
+        {
+          "fecha": "2026-03-25",
+          "libro": "Yo soy una señora",
+          "autor": "Jaime Bayly",
+          "pais": ""
+        },
+        {
+          "fecha": "2026-04-29",
+          "libro": "Huaco retrato",
+          "autor": "Gabriela Wiener",
+          "pais": ""
+        },
+        {
+          "fecha": "2026-05-27",
+          "libro": "Animales luminosos",
+          "autor": "Jeremías Gamboa",
+          "pais": ""
+        },
+        {
+          "fecha": "2026-06-29",
+          "libro": "Un mundo para Julius",
+          "autor": "Alfredo Bryce Echenique",
+          "pais": ""
+        }
+      ]
+    },
+    {
+      "titulo": "Algo más tranqui",
+      "periodo": "Julio–diciembre de 2025",
+      "horario": "Primer miércoles del mes · 19:00 España",
+      "nota": "",
+      "libros": [
+        {
+          "fecha": "2025-07-02",
+          "libro": "Balzac y la joven costurera china",
+          "autor": "Dai Sijie",
+          "pais": ""
+        },
+        {
+          "fecha": "2025-08-06",
+          "libro": "El curioso incidente del perro a medianoche",
+          "autor": "Mark Haddon",
+          "pais": ""
+        },
+        {
+          "fecha": "2025-09-03",
+          "libro": "Fiesta en la madriguera",
+          "autor": "Juan Pablo Villalobos",
+          "pais": ""
+        },
+        {
+          "fecha": "2025-10-01",
+          "libro": "Las gratitudes",
+          "autor": "Delphine de Vigan",
+          "pais": ""
+        },
+        {
+          "fecha": "2025-11-05",
+          "libro": "La hija única",
+          "autor": "Guadalupe Nettel",
+          "pais": ""
+        },
+        {
+          "fecha": "2025-12-03",
+          "libro": "Tinta invisible",
+          "autor": "Javier Peña",
+          "pais": ""
+        }
+      ]
+    },
+    {
+      "titulo": "Relatos desde el imperio",
+      "periodo": "Julio–diciembre de 2024",
+      "horario": "Último miércoles del mes · 19:00 España",
+      "nota": "",
+      "libros": [
+        {
+          "fecha": "2024-07-31",
+          "libro": "Nueve cuentos",
+          "autor": "J. D. Salinger",
+          "pais": ""
+        },
+        {
+          "fecha": "2024-08-28",
+          "libro": "De qué hablamos cuando hablamos de amor",
+          "autor": "Raymond Carver",
+          "pais": ""
+        },
+        {
+          "fecha": "2024-09-25",
+          "libro": "La niña del pelo raro",
+          "autor": "David Foster Wallace",
+          "pais": ""
+        },
+        {
+          "fecha": "2024-10-30",
+          "libro": "Hijo de Jesús",
+          "autor": "Denis Johnson",
+          "pais": ""
+        },
+        {
+          "fecha": "2024-11-27",
+          "libro": "Manual para mujeres de la limpieza",
+          "autor": "Lucia Berlin",
+          "pais": ""
+        },
+        {
+          "fecha": "2024-12-18",
+          "libro": "Taj Mahal",
+          "autor": "Deborah Eisenberg",
+          "pais": ""
+        }
+      ]
+    },
+    {
+      "titulo": "Novelas de grandes infelices",
+      "periodo": "Enero–junio de 2024",
+      "horario": "19:00 España · 14:00 Caracas · 13:00 Lima",
+      "nota": "Basado en la selección de Javier Peña del podcast «Grandes infelices».",
+      "libros": [
+        {
+          "fecha": "2024-01-31",
+          "libro": "La conjura de los necios",
+          "autor": "John Kennedy Toole",
+          "pais": ""
+        },
+        {
+          "fecha": "2024-02-28",
+          "libro": "Matar a un ruiseñor",
+          "autor": "Harper Lee",
+          "pais": ""
+        },
+        {
+          "fecha": "2024-03-19",
+          "libro": "Estrella distante",
+          "autor": "Roberto Bolaño",
+          "pais": ""
+        },
+        {
+          "fecha": "2024-04-24",
+          "libro": "La campana de cristal",
+          "autor": "Sylvia Plath",
+          "pais": ""
+        },
+        {
+          "fecha": "2024-05-29",
+          "libro": "Carol",
+          "autor": "Patricia Highsmith",
+          "pais": ""
+        },
+        {
+          "fecha": "2024-06-26",
+          "libro": "La señora Dalloway",
+          "autor": "Virginia Woolf",
+          "pais": ""
+        }
+      ]
+    },
+    {
+      "titulo": "América de sur a norte",
+      "periodo": "Mayo–noviembre de 2023",
+      "horario": "Último jueves del mes · 12:00 Perú · 13:00 Venezuela · 19:00 España",
+      "nota": "",
+      "libros": [
+        {
+          "fecha": "2023-05-25",
+          "libro": "Distancia de rescate",
+          "autor": "Samanta Schweblin",
+          "pais": "Argentina"
+        },
+        {
+          "fecha": "2023-06-29",
+          "libro": "Pajarito",
+          "autor": "Claudia Ulloa",
+          "pais": "Perú"
+        },
+        {
+          "fecha": "2023-07-20",
+          "libro": "Patria o muerte",
+          "autor": "Alberto Barrera Tyszka",
+          "pais": "Venezuela"
+        },
+        {
+          "fecha": "2023-09-28",
+          "libro": "Desierto sonoro (Lost Children Archive)",
+          "autor": "Valeria Luiselli",
+          "pais": "México – EE. UU."
+        },
+        {
+          "fecha": "2023-10-26",
+          "libro": "La maravillosa vida breve de Óscar Wao",
+          "autor": "Junot Díaz",
+          "pais": "República Dominicana – EE. UU."
+        },
+        {
+          "fecha": "2023-11-30",
+          "libro": "Demasiada felicidad (Too Much Happiness)",
+          "autor": "Alice Munro",
+          "pais": "Canadá"
+        }
+      ]
     }
   ]
 }

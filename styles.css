@@ -180,6 +180,13 @@ em { font-style: italic; }
 
 .catalog { border-top: 1px solid var(--line); }
 .catalog__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.catalog__grid--single { grid-template-columns: minmax(0, 760px); }
+.catalog .section__title { margin-bottom: 20px; }
+.catalog__lead { max-width: 40em; margin-bottom: 44px; font-size: 1.1rem; color: var(--muted); }
+.tcard > p + p:not(.tcard__meta) { margin-top: 12px; }
+.page-hero__tabs { display: flex; flex-wrap: wrap; gap: 10px 28px; margin-top: 26px; }
+.page-hero__tabs a { font-size: .75rem; text-transform: uppercase; letter-spacing: .12em; text-decoration: none; color: var(--accent); font-weight: 500; }
+.page-hero__tabs a:hover { text-decoration: underline; }
 .tcard { display: flex; flex-direction: column; background: var(--paper-2); padding: clamp(24px, 3vw, 34px); }
 .tcard h3 { font: 400 1.8rem/1.15 var(--serif); margin-bottom: 14px; }
 .tcard > p:not(.tcard__meta) { font-size: .96rem; color: #3d3833; }

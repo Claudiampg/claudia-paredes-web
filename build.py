@@ -430,24 +430,69 @@ def formulario(id_, nombre_netlify, asunto, clase, titulo_tag, titulo, entrada, 
                         )
 
 
-def pagina_talleres():
-    t = TALLERES
-    tarjetas = "\n".join("""      <article class="tcard">
+def tarjetas_talleres(lista):
+    return "\n".join("""      <article class="tcard">
         <h3>{titulo}</h3>
-        <p>{desc}</p>
+        {desc}
         {meta}
         <div class="tcard__links">
           <a href="#fechas">Ver fechas →</a>
           <a href="#contratar" data-taller="{titulo}">Llevarlo a mi espacio →</a>
         </div>
-      </article>""".format(titulo=esc(c.get("titulo")), desc=inline(c.get("descripcion")),
+      </article>""".format(titulo=esc(c.get("titulo")), desc="\n        ".join("<p>%s</p>" % p for p in parrafos(c.get("descripcion"))),
                            meta='<p class="tcard__meta">%s</p>' % esc(c["modalidad"]) if c.get("modalidad") else "")
-                         for c in t.get("catalogo", []))
-    pasos = "\n".join("""        <li>
+                     for c in lista)
+
+
+def pasos_metodo(lista):
+    return "\n".join("""        <li>
           <h3>{titulo}</h3>
           <p>{texto}</p>
-        </li>""".format(titulo=esc(p.get("titulo")), texto=inline(p.get("texto"))) for p in t.get("metodologia", []))
-    opciones_taller = "".join('<option value="{0}">{0}</option>'.format(esc(c.get("titulo"))) for c in t.get("catalogo", []))
+        </li>""".format(titulo=esc(p.get("titulo")), texto=inline(p.get("texto"))) for p in lista)
+
+
+def bloque_talleres(id_, numero, titulo, entrada, catalogo, titulo_metodo, metodo_entrada, pasos):
+    """Un bloque de la página Talleres: catálogo y metodología de un tipo de taller."""
+    if not catalogo and not pasos:
+        return ""
+    rejilla = "catalog__grid catalog__grid--single" if len(catalogo) == 1 else "catalog__grid"
+    lead = '\n    <p class="catalog__lead">%s</p>' % inline(entrada) if entrada else ""
+    metodo = ""
+    if pasos:
+        metodo = """
+  <section id="{id}-metodo" class="method">
+    <div class="method__inner">
+      <h2 class="section__title">{titulo_metodo}</h2>
+      {lead_metodo}
+      <ol class="method__steps">
+{pasos}
+      </ol>
+    </div>
+  </section>""".format(id=id_, titulo_metodo=esc(titulo_metodo),
+                       lead_metodo='<p class="method__lead">%s</p>' % inline(metodo_entrada) if metodo_entrada else "",
+                       pasos=pasos_metodo(pasos))
+    return """
+  <section id="{id}" class="section catalog">
+    <h2 class="section__title"><span>{numero}</span> {titulo}</h2>{lead}
+    <div class="{rejilla}">
+{tarjetas}
+    </div>
+  </section>
+{metodo}""".format(id=id_, numero=numero, titulo=esc(titulo), lead=lead, rejilla=rejilla,
+                   tarjetas=tarjetas_talleres(catalogo), metodo=metodo)
+
+
+def pagina_talleres():
+    t = TALLERES
+    escritura = bloque_talleres(
+        "escritura", "01", "Talleres de escritura", t.get("escritura_entrada"), t.get("catalogo", []),
+        "Metodología de escritura", t.get("metodologia_entrada"), t.get("metodologia", []))
+    lectura = bloque_talleres(
+        "lectura", "02", "Talleres de lectura", t.get("lectura_entrada"), t.get("lectura_catalogo", []),
+        t.get("lectura_metodologia_titulo") or "Cómo funciona", t.get("lectura_metodologia_entrada"),
+        t.get("lectura_metodologia", []))
+    todos = t.get("catalogo", []) + t.get("lectura_catalogo", [])
+    opciones_taller = "".join('<option value="{0}">{0}</option>'.format(esc(c.get("titulo"))) for c in todos)
     asistir = formulario(
         "asistir", "taller-asistir", "Quiero asistir a un taller", "join-form", "h3", "Quiero asistir",
         t.get("asistir_texto"),
@@ -471,6 +516,10 @@ def pagina_talleres():
     <p class="eyebrow">{antetitulo}</p>
     <h1>{titulo}</h1>
     <p class="page-hero__lead">{entrada}</p>
+    <nav class="page-hero__tabs" aria-label="Tipos de taller">
+      <a href="#escritura">Talleres de escritura →</a>
+      <a href="#lectura">Talleres de lectura →</a>
+    </nav>
     <div class="page-hero__cta">
       <a href="#asistir" class="btn">Quiero asistir</a>
       <a href="#contratar" class="btn btn--ghost">Llevarlo a mi librería</a>
@@ -484,24 +533,9 @@ def pagina_talleres():
 {calendario}
   </section>
 
-  <!-- TODOS LOS TALLERES -->
-  <section id="catalogo" class="section catalog">
-    <h2 class="section__title">Todos los talleres</h2>
-    <div class="catalog__grid">
-{tarjetas}
-    </div>
-  </section>
+  <!-- TALLERES DE ESCRITURA -->{escritura}
 
-  <!-- METODOLOGÍA -->
-  <section id="metodologia" class="method">
-    <div class="method__inner">
-      <h2 class="section__title">Metodología</h2>
-      <p class="method__lead">{metodo}</p>
-      <ol class="method__steps">
-{pasos}
-      </ol>
-    </div>
-  </section>
+  <!-- TALLERES DE LECTURA -->{lectura}
 
   <!-- PARTICIPAR -->
   <section id="participar" class="section join">
@@ -516,7 +550,7 @@ def pagina_talleres():
   </section>""".format(
         antetitulo=esc(t.get("antetitulo")), titulo=inline(t.get("titulo")), entrada=inline(t.get("entrada")),
         aviso=aviso("Contenido de ejemplo: talleres, fechas y metodología pendientes de confirmar") if AVISO_TALLERES else "",
-        calendario=calendario(), tarjetas=tarjetas, metodo=inline(t.get("metodologia_entrada")), pasos=pasos,
+        calendario=calendario(), escritura=escritura, lectura=lectura,
         asistir=asistir, contratar=contratar)
     return pagina("talleres.html", t.get("seo_titulo"), t.get("seo_descripcion"), cuerpo,
                   scripts=("talleres.js", "site.js"), con_talleres=True)

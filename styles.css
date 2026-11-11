@@ -144,6 +144,7 @@ em { font-style: italic; }
 .cal-item__date { font-size: .7rem; text-transform: uppercase; letter-spacing: .14em; color: var(--accent); text-align: center; }
 .cal-item__date b { display: block; font: 400 2.5rem/1 var(--serif); letter-spacing: 0; color: var(--ink); }
 .cal-item__body h3 { font: 400 1.5rem/1.2 var(--serif); }
+.cal-item__type { display: block; margin-bottom: 4px; font-size: .68rem; text-transform: uppercase; letter-spacing: .14em; font-weight: 500; color: var(--accent); }
 .cal-item__body p { font-size: .85rem; color: var(--muted); margin-top: 2px; }
 .cal-item__cta { font-size: .72rem; text-transform: uppercase; letter-spacing: .12em; text-decoration: none; white-space: nowrap; }
 .cal-item__cta:hover { color: var(--accent); }
@@ -527,3 +528,65 @@ em { font-style: italic; }
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
 }
+
+/* ============ TEMPORADAS DE LECTURA ============ */
+.seasons { margin-top: clamp(56px, 7vw, 88px); }
+.seasons__title { font: 400 clamp(1.8rem, 3.4vw, 2.4rem)/1.1 var(--serif); }
+.seasons__lead { margin: 10px 0 28px; color: var(--muted); }
+.season { border-top: 1px solid var(--line); }
+.season:last-child { border-bottom: 1px solid var(--line); }
+.season summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 9.5rem 1fr auto; align-items: baseline; gap: 6px 20px; padding: 22px 36px 22px 0; position: relative; }
+.season summary::-webkit-details-marker { display: none; }
+.season summary::after { content: "+"; position: absolute; right: 4px; top: 50%; transform: translateY(-50%); font: 300 1.6rem/1 var(--sans); color: var(--accent); }
+.season[open] summary::after { content: "–"; }
+.season summary:hover .season__name { color: var(--accent); }
+.season__num { font-size: .72rem; text-transform: uppercase; letter-spacing: .14em; color: var(--accent); font-weight: 500; }
+.season__name { font: 400 clamp(1.4rem, 2.6vw, 1.8rem)/1.2 var(--serif); transition: color .2s; }
+.season__when { grid-column: 3; grid-row: 1; font-size: .85rem; color: var(--muted); white-space: nowrap; }
+.season__badge { grid-column: 2; justify-self: start; font-size: .65rem; text-transform: uppercase; letter-spacing: .14em; font-weight: 500; color: var(--paper); background: var(--accent); padding: 4px 9px; }
+.season__meta { margin-left: calc(9.5rem + 20px); font-size: .88rem; color: var(--muted); }
+.season__note { margin: 6px 0 0 calc(9.5rem + 20px); font-size: .88rem; font-style: italic; color: var(--muted); }
+.season__books { list-style: none; margin: 18px 0 30px calc(9.5rem + 20px); display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 32px; }
+.season__books li { display: flex; gap: 16px; align-items: baseline; }
+.season__books time { flex: none; width: 2.6rem; text-align: center; line-height: 1; }
+.season__day { display: block; font: 400 1.6rem/1 var(--serif); }
+.season__month { display: block; margin-top: 4px; font-size: .62rem; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); }
+.season__books cite { display: block; font: italic 400 1.15rem/1.25 var(--serif); }
+.season__author { display: block; margin-top: 2px; font-size: .85rem; color: var(--muted); }
+.season__books li.is-past { opacity: .55; }
+@media (max-width: 860px) {
+  .season summary { grid-template-columns: 1fr; padding-right: 32px; }
+  .season__when, .season__badge { grid-column: 1; grid-row: auto; }
+  .season__meta, .season__note { margin-left: 0; }
+  .season__books { margin-left: 0; grid-template-columns: 1fr; }
+}
+
+/* ============ METODOLOGÍA POR TIPO DE TALLER ============ */
+.method__group + .method__group { margin-top: clamp(56px, 7vw, 88px); padding-top: clamp(40px, 5vw, 56px); border-top: 1px solid rgba(245,240,232,.25); }
+.method__kind { font-size: .75rem; text-transform: uppercase; letter-spacing: .16em; font-weight: 500; color: #e9a58f; margin: 8px 0 14px; }
+.method__intro { max-width: 40em; font-size: 1.05rem; color: #e6dfd3; margin-bottom: 14px; }
+.method__format { max-width: 40em; font-size: .95rem; color: #cfc8bc; margin-bottom: 14px; }
+.method__format strong { font-weight: 500; color: var(--paper); }
+.method__format-meta { display: block; margin-top: 6px; font-size: .68rem; text-transform: uppercase; letter-spacing: .14em; color: #e9a58f; }
+.method__group .method__lead { margin-top: 22px; }
+.method__group .method__steps { margin-top: 36px; }
+
+/* ============ TALLERES REALIZADOS ============ */
+.done__group + .done__group { margin-top: clamp(64px, 8vw, 96px); }
+.done .seasons__lead { margin-bottom: 28px; }
+.done > .section__title { margin-bottom: clamp(36px, 5vw, 56px); }
+
+/* ============ APARTADOS POR TIPO DE TALLER ============ */
+.type-intro { border-top: 1px solid var(--line); padding-bottom: clamp(48px, 6vw, 72px); }
+.type-intro .catalog__lead { margin-bottom: 0; }
+.type-format { max-width: 760px; margin-top: 32px; background: var(--paper-2); padding: clamp(24px, 3vw, 34px); }
+.type-format h3 { font: 400 1.8rem/1.15 var(--serif); margin-bottom: 12px; }
+.type-format p:not(.tcard__meta) { font-size: .96rem; color: #3d3833; }
+.type-format p + p:not(.tcard__meta) { margin-top: 12px; }
+.method .method__inner > h3.section__title { margin-bottom: 20px; }
+.type-more { padding-top: clamp(56px, 7vw, 88px); }
+.type-block + .type-block { margin-top: clamp(64px, 8vw, 96px); }
+.type-upcoming { list-style: none; max-width: 860px; border-top: 1px solid var(--ink); margin-top: 20px; }
+.type-upcoming__empty { padding: 20px 4px; border-bottom: 1px solid var(--line); color: var(--muted); }
+.type-upcoming__empty a { margin-left: 8px; font-size: .72rem; text-transform: uppercase; letter-spacing: .12em; text-decoration: none; color: var(--accent); }
+.type-block .seasons, .type-block .catalog__grid { margin-top: 8px; }

@@ -170,6 +170,16 @@ MENU = [("sobre.html", "Sobre"), ("talleres.html", "Talleres"), ("obra.html", "O
         ("prensa.html", "Prensa"), ("contacto.html", "Contacto")]
 
 
+
+def version(archivo):
+    """Huella corta del archivo, para que los navegadores no usen una copia antigua."""
+    import hashlib
+    try:
+        with open(os.path.join(RAIZ, archivo), "rb") as f:
+            return hashlib.sha1(f.read()).hexdigest()[:8]
+    except OSError:
+        return "1"
+
 def pagina(archivo, seo_titulo, seo_descripcion, cuerpo, scripts=("site.js",),
            imagen=None, con_talleres=False):
     inicio = archivo == "index.html"
@@ -177,10 +187,11 @@ def pagina(archivo, seo_titulo, seo_descripcion, cuerpo, scripts=("site.js",),
         '    <a href="%s"%s>%s</a>' % (h, ' aria-current="page"' if h == archivo else "", t) for h, t in MENU)
     datos = ""
     if con_talleres:
-        lista = [{"fecha": str(f.get("fecha", ""))[:10], "titulo": f.get("taller", ""), "modalidad": f.get("lugar", "")}
+        lista = [{"fecha": str(f.get("fecha", ""))[:10], "titulo": f.get("taller", ""), "modalidad": f.get("lugar", ""),
+                  "tipo": f.get("tipo") or ""}
                  for f in TALLERES.get("fechas", []) if f.get("fecha")]
         datos = "<script>window.TALLERES = %s;</script>\n" % json.dumps(lista, ensure_ascii=False).replace("</", "<\\/")
-    js = "".join('<script src="%s"></script>\n' % s for s in scripts)
+    js = "".join('<script src="%s?v=%s"></script>\n' % (s, version(s)) for s in scripts)
     return """<!doctype html>
 <html lang="es">
 <head>
@@ -194,7 +205,7 @@ def pagina(archivo, seo_titulo, seo_descripcion, cuerpo, scripts=("site.js",),
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v={version_css}">
 </head>
 <body>
 
@@ -216,7 +227,7 @@ def pagina(archivo, seo_titulo, seo_descripcion, cuerpo, scripts=("site.js",),
 
 {datos}{js}</body>
 </html>
-""".format(titulo=esc(seo_titulo), desc=esc(seo_descripcion),
+""".format(version_css=version("styles.css"), titulo=esc(seo_titulo), desc=esc(seo_descripcion),
            imagen=esc(ruta_img(imagen or AJUSTES.get("imagen_compartir"))),
            marca_href="#inicio" if inicio else "index.html", marca=esc(AJUSTES.get("nombre_corto", NOMBRE)),
            menu=menu, cuerpo=cuerpo.strip("\n"), nombre=esc(NOMBRE), datos=datos, js=js)
@@ -436,7 +447,6 @@ def tarjetas_talleres(lista):
         {desc}
         {meta}
         <div class="tcard__links">
-          <a href="#fechas">Ver fechas →</a>
           <a href="#contratar" data-taller="{titulo}">Llevarlo a mi espacio →</a>
         </div>
       </article>""".format(titulo=esc(c.get("titulo")), desc="\n        ".join("<p>%s</p>" % p for p in parrafos(c.get("descripcion"))),
@@ -451,46 +461,114 @@ def pasos_metodo(lista):
         </li>""".format(titulo=esc(p.get("titulo")), texto=inline(p.get("texto"))) for p in lista)
 
 
-def bloque_talleres(id_, numero, titulo, entrada, catalogo, titulo_metodo, metodo_entrada, pasos):
-    """Un bloque de la página Talleres: catálogo y metodología de un tipo de taller."""
-    if not catalogo and not pasos:
+MESES_CORTOS = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"]
+
+
+def temporadas_lectura(temporadas):
+    """Archivo de temporadas del taller de lectura. La temporada en curso la marca talleres.js."""
+    validas = []
+    for t in temporadas or []:
+        libros = sorted((b for b in t.get("libros") or [] if b.get("libro")), key=lambda b: str(b.get("fecha") or ""))
+        if t.get("titulo") and libros:
+            validas.append((t, libros))
+    validas.sort(key=lambda par: str(par[1][-1].get("fecha") or ""), reverse=True)
+    if not validas:
         return ""
-    rejilla = "catalog__grid catalog__grid--single" if len(catalogo) == 1 else "catalog__grid"
-    lead = '\n    <p class="catalog__lead">%s</p>' % inline(entrada) if entrada else ""
+    total = len(validas)
+    fichas = []
+    for i, (t, libros) in enumerate(validas):
+        filas = []
+        for b in libros:
+            fecha = str(b.get("fecha") or "")[:10]
+            m = re.match(r"(\d{4})-(\d{2})-(\d{2})$", fecha)
+            dia = '<span class="season__day">%d</span><span class="season__month">%s</span>' % (
+                int(m.group(3)), MESES_CORTOS[int(m.group(2)) - 1]) if m else ""
+            pais = ' <span class="season__country">(%s)</span>' % esc(b["pais"]) if b.get("pais") else ""
+            filas.append("""          <li data-fecha="{fecha}">
+            <time datetime="{fecha}">{dia}</time>
+            <p><cite>{libro}</cite><span class="season__author">{autor}{pais}</span></p>
+          </li>""".format(fecha=esc(fecha), dia=dia, libro=esc(b.get("libro")), autor=esc(b.get("autor")), pais=pais))
+        meta = '\n        <p class="season__meta">%s</p>' % esc(t["horario"]) if t.get("horario") else ""
+        nota ='\n        <p class="season__note">%s</p>' % inline(t["nota"]) if t.get("nota") else ""
+        fichas.append("""      <details class="season"{abierta} data-inicio="{inicio}" data-fin="{fin}">
+        <summary>
+          <span class="season__num">Temporada {num}</span>
+          <span class="season__name">{titulo}</span>
+          <span class="season__badge" hidden>En curso</span>
+          <span class="season__when">{periodo}</span>
+        </summary>{meta}{nota}
+        <ol class="season__books">
+{filas}
+        </ol>
+      </details>""".format(abierta=" open" if i == 0 else "", inicio=esc(str(libros[0].get("fecha"))[:10]),
+                           fin=esc(str(libros[-1].get("fecha"))[:10]), num=total - i, titulo=esc(t["titulo"]),
+                           periodo=esc(t.get("periodo")), meta=meta, nota=nota, filas="\n".join(filas)))
+    return """      <div class="seasons">
+{fichas}
+      </div>""".format(fichas="\n".join(fichas))
+
+
+def apartado_taller(id_, numero, titulo, tipo, entrada, formatos, lead, pasos, realizados, realizados_lead=""):
+    """Un apartado completo de la página Talleres: presentación, metodología,
+    próximas sesiones de ese tipo (las rellena talleres.js) y talleres realizados."""
+    partes = []
+    if entrada:
+        partes.append('    <p class="catalog__lead">%s</p>' % inline(entrada))
+    for f in formatos:
+        desc = "\n".join('      <p>%s</p>' % x for x in parrafos(f.get("descripcion")))
+        meta = '\n      <p class="tcard__meta">%s</p>' % esc(f["modalidad"]) if f.get("modalidad") else ""
+        partes.append('    <div class="type-format">\n      <h3>%s</h3>\n%s%s\n    </div>' % (esc(f.get("titulo")), desc, meta))
+    intro = """
+  <section id="{id}" class="section type-intro">
+    <h2 class="section__title"><span>{numero}</span> {titulo}</h2>
+{partes}
+  </section>""".format(id=id_, numero=numero, titulo=esc(titulo), partes="\n".join(partes))
     metodo = ""
-    if pasos:
+    if lead or pasos:
         metodo = """
-  <section id="{id}-metodo" class="method">
+  <section id="{id}-metodologia" class="method">
     <div class="method__inner">
-      <h2 class="section__title">{titulo_metodo}</h2>
-      {lead_metodo}
+      <h3 class="section__title">Metodología</h3>
+      {lead}
       <ol class="method__steps">
 {pasos}
       </ol>
     </div>
-  </section>""".format(id=id_, titulo_metodo=esc(titulo_metodo),
-                       lead_metodo='<p class="method__lead">%s</p>' % inline(metodo_entrada) if metodo_entrada else "",
+  </section>""".format(id=id_, lead='<p class="method__lead">%s</p>' % inline(lead) if lead else "",
                        pasos=pasos_metodo(pasos))
-    return """
-  <section id="{id}" class="section catalog">
-    <h2 class="section__title"><span>{numero}</span> {titulo}</h2>{lead}
-    <div class="{rejilla}">
-{tarjetas}
-    </div>
-  </section>
-{metodo}""".format(id=id_, numero=numero, titulo=esc(titulo), lead=lead, rejilla=rejilla,
-                   tarjetas=tarjetas_talleres(catalogo), metodo=metodo)
+    hechos = ""
+    if realizados:
+        hechos = """
+    <div class="type-block" id="{id}-realizados">
+      <h3 class="seasons__title">Talleres realizados</h3>{lead}
+{realizados}
+    </div>""".format(id=id_, lead='\n      <p class="seasons__lead">%s</p>' % esc(realizados_lead) if realizados_lead else "",
+                     realizados=realizados)
+    resto = """
+  <section class="section type-more">
+    <div class="type-block" id="{id}-proximas">
+      <h3 class="seasons__title">Próximas sesiones</h3>
+      <ol class="type-upcoming" data-tipo="{tipo}">
+        <li class="type-upcoming__empty">Pronto anunciaremos nuevas fechas. <a href="#asistir">Avísame →</a></li>
+      </ol>
+    </div>{hechos}
+  </section>""".format(id=id_, tipo=esc(tipo), hechos=hechos)
+    return intro + metodo + resto
 
 
 def pagina_talleres():
     t = TALLERES
-    escritura = bloque_talleres(
-        "escritura", "01", "Talleres de escritura", t.get("escritura_entrada"), t.get("catalogo", []),
-        "Metodología de escritura", t.get("metodologia_entrada"), t.get("metodologia", []))
-    lectura = bloque_talleres(
-        "lectura", "02", "Talleres de lectura", t.get("lectura_entrada"), t.get("lectura_catalogo", []),
-        t.get("lectura_metodologia_titulo") or "Cómo funciona", t.get("lectura_metodologia_entrada"),
-        t.get("lectura_metodologia", []))
+    catalogo = t.get("catalogo", [])
+    rejilla = "catalog__grid catalog__grid--single" if len(catalogo) == 1 else "catalog__grid"
+    lectura = apartado_taller(
+        "lectura", "01", "Talleres de lectura", "Taller de lectura", t.get("lectura_entrada"),
+        t.get("lectura_catalogo", []), t.get("lectura_metodologia_entrada"), t.get("lectura_metodologia", []),
+        temporadas_lectura(t.get("lectura_temporadas")),
+        "Los libros que hemos leído juntos, temporada a temporada.")
+    escritura = apartado_taller(
+        "escritura", "02", "Talleres de escritura", "Taller de escritura", t.get("escritura_entrada"), [],
+        t.get("metodologia_entrada"), t.get("metodologia", []),
+        '      <div class="%s">\n%s\n      </div>' % (rejilla, tarjetas_talleres(catalogo)) if catalogo else "")
     todos = t.get("catalogo", []) + t.get("lectura_catalogo", [])
     opciones_taller = "".join('<option value="{0}">{0}</option>'.format(esc(c.get("titulo"))) for c in todos)
     asistir = formulario(
@@ -516,9 +594,10 @@ def pagina_talleres():
     <p class="eyebrow">{antetitulo}</p>
     <h1>{titulo}</h1>
     <p class="page-hero__lead">{entrada}</p>
-    <nav class="page-hero__tabs" aria-label="Tipos de taller">
-      <a href="#escritura">Talleres de escritura →</a>
+    <nav class="page-hero__tabs" aria-label="En esta página">
+      <a href="#fechas">Próximas fechas →</a>
       <a href="#lectura">Talleres de lectura →</a>
+      <a href="#escritura">Talleres de escritura →</a>
     </nav>
     <div class="page-hero__cta">
       <a href="#asistir" class="btn">Quiero asistir</a>
@@ -533,9 +612,9 @@ def pagina_talleres():
 {calendario}
   </section>
 
-  <!-- TALLERES DE ESCRITURA -->{escritura}
-
   <!-- TALLERES DE LECTURA -->{lectura}
+
+  <!-- TALLERES DE ESCRITURA -->{escritura}
 
   <!-- PARTICIPAR -->
   <section id="participar" class="section join">
@@ -550,7 +629,7 @@ def pagina_talleres():
   </section>""".format(
         antetitulo=esc(t.get("antetitulo")), titulo=inline(t.get("titulo")), entrada=inline(t.get("entrada")),
         aviso=aviso("Contenido de ejemplo: talleres, fechas y metodología pendientes de confirmar") if AVISO_TALLERES else "",
-        calendario=calendario(), escritura=escritura, lectura=lectura,
+        calendario=calendario(), lectura=lectura, escritura=escritura,
         asistir=asistir, contratar=contratar)
     return pagina("talleres.html", t.get("seo_titulo"), t.get("seo_descripcion"), cuerpo,
                   scripts=("talleres.js", "site.js"), con_talleres=True)

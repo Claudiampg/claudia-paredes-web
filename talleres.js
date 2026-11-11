@@ -56,7 +56,7 @@ const fechaLarga = d => d.toLocaleDateString('es-ES', { day: 'numeric', month: '
         cell.type = 'button';
         cell.classList.add('cal__day--event');
         cell.dataset.fecha = event.fecha;
-        cell.setAttribute('aria-label', d + ': ' + event.titulo);
+        cell.setAttribute('aria-label', d + ': ' + (event.tipo ? event.tipo + ', ' : '') + event.titulo);
         cell.addEventListener('click', () => highlight(event.fecha));
       }
       grid.appendChild(cell);
@@ -76,7 +76,8 @@ const fechaLarga = d => d.toLocaleDateString('es-ES', { day: 'numeric', month: '
       const mon = t.date.toLocaleDateString('es-ES', { month: 'short' }).replace('.', '');
       li.innerHTML =
         '<time class="cal-item__date" datetime="' + t.fecha + '"><b>' + day + '</b>' + mon + '</time>' +
-        '<div class="cal-item__body"><h3>' + escHTML(t.titulo) + '</h3><p>' + escHTML(t.modalidad) + '</p></div>' +
+        '<div class="cal-item__body">' + (t.tipo ? '<span class="cal-item__type">' + escHTML(t.tipo) + '</span>' : '') +
+        '<h3>' + escHTML(t.titulo) + '</h3><p>' + escHTML(t.modalidad) + '</p></div>' +
         '<a class="cal-item__cta" href="talleres.html?fecha=' + t.fecha + '#asistir">Apuntarme →</a>';
       li.addEventListener('mouseenter', () => {
         current = monthIndex(t.date);
@@ -100,9 +101,10 @@ const fechaLarga = d => d.toLocaleDateString('es-ES', { day: 'numeric', month: '
 
   proximos.forEach(t => {
     const o = document.createElement('option');
-    o.value = t.titulo + ' · ' + fechaLarga(t.date);
+    const nombre = (t.tipo ? t.tipo + ': ' : '') + t.titulo;
+    o.value = nombre + ' · ' + fechaLarga(t.date);
     o.dataset.fecha = t.fecha;
-    o.textContent = fechaLarga(t.date) + ' · ' + t.titulo;
+    o.textContent = fechaLarga(t.date) + ' · ' + nombre;
     selectFecha.insertBefore(o, selectFecha.lastElementChild);
   });
 
@@ -115,7 +117,7 @@ const fechaLarga = d => d.toLocaleDateString('es-ES', { day: 'numeric', month: '
   if (inicial) elegirFecha(inicial);
 
   // En esta misma página, «Apuntarme» no recarga
-  document.getElementById('cal-list').addEventListener('click', e => {
+  document.addEventListener('click', e => {
     const a = e.target.closest('.cal-item__cta');
     if (!a) return;
     e.preventDefault();
@@ -128,4 +130,49 @@ const fechaLarga = d => d.toLocaleDateString('es-ES', { day: 'numeric', month: '
   document.querySelectorAll('[data-taller]').forEach(a => a.addEventListener('click', () => {
     document.getElementById('c-taller').value = a.dataset.taller;
   }));
+})();
+
+/* ============ TEMPORADAS DE LECTURA ============
+   Marca la temporada en curso (o la próxima, si empieza en menos de un mes)
+   y las sesiones que ya han pasado. */
+(function () {
+  const fichas = document.querySelectorAll('.season[data-inicio][data-fin]');
+  if (!fichas.length) return;
+  const DIA = 864e5;
+  let marcada = null;
+  fichas.forEach(f => {
+    const inicio = parseFecha(f.dataset.inicio);
+    const fin = parseFecha(f.dataset.fin);
+    f.querySelectorAll('li[data-fecha]').forEach(li => {
+      if (parseFecha(li.dataset.fecha) < hoy) li.classList.add('is-past');
+    });
+    if (!marcada && hoy <= fin && hoy >= new Date(inicio - 31 * DIA)) {
+      marcada = f;
+      const badge = f.querySelector('.season__badge');
+      if (badge) { badge.textContent = hoy < inicio ? 'Próximamente' : 'En curso'; badge.hidden = false; }
+    }
+  });
+  if (marcada) fichas.forEach(f => { f.open = f === marcada; });
+})();
+
+/* ============ PRÓXIMAS SESIONES POR TIPO DE TALLER ============
+   En cada apartado (lectura, escritura) lista solo las fechas de ese tipo. */
+(function () {
+  document.querySelectorAll('.type-upcoming[data-tipo]').forEach(ol => {
+    const deEste = proximos.filter(t => t.tipo === ol.dataset.tipo);
+    if (!deEste.length) return;
+    ol.innerHTML = '';
+    deEste.forEach(t => {
+      const day = t.date.toLocaleDateString('es-ES', { day: 'numeric' });
+      const mon = t.date.toLocaleDateString('es-ES', { month: 'short' }).replace('.', '');
+      const li = document.createElement('li');
+      li.className = 'cal-item';
+      li.dataset.fecha = t.fecha;
+      li.innerHTML =
+        '<time class="cal-item__date" datetime="' + t.fecha + '"><b>' + day + '</b>' + mon + '</time>' +
+        '<div class="cal-item__body"><h3>' + escHTML(t.titulo) + '</h3><p>' + escHTML(t.modalidad) + '</p></div>' +
+        '<a class="cal-item__cta" href="talleres.html?fecha=' + t.fecha + '#asistir">Apuntarme →</a>';
+      ol.appendChild(li);
+    });
+  });
 })();

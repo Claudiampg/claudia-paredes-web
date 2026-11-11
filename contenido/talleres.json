@@ -5,16 +5,22 @@
   "contenido_de_ejemplo": true,
   "fechas": [
     {
-      "taller": "Comienzo de taller de lectura 6 libros en 6 meses: \"A Nobelear\"",
-      "fecha": "2027-01-27",
-      "lugar": "Online - Zoom",
-      "tipo": "Taller de lectura"
+      "fecha": "2026-11-25",
+      "tipo": "Taller de lectura",
+      "taller": "6 libros en 6 meses: Ay, ¿el amor? Sesión 5: A sangre fría",
+      "lugar": "Online, Zoom"
     },
     {
-      "fecha": "2026-11-26",
-      "taller": "6 libros en 6 meses: Ay, ¿el amor? Sesión 5: In Cold Blood",
-      "lugar": "Online, Zoom",
-      "tipo": "Taller de lectura"
+      "fecha": "2026-12-16",
+      "tipo": "Taller de lectura",
+      "taller": "6 libros en 6 meses: Ay, ¿el amor? Sesión 6: Las abuelas",
+      "lugar": "Online, Zoom"
+    },
+    {
+      "fecha": "2027-01-27",
+      "tipo": "Taller de lectura",
+      "taller": "6 libros en 6 meses: A Nobelear. Sesión 1",
+      "lugar": "Online, Zoom"
     }
   ],
   "metodologia_entrada": "Se aprende a escribir escribiendo. Leemos a distintas autoras y autores, pero el enfoque es práctico: escribir, soltar la mano y mejorar con la mirada del grupo. No hace falta experiencia previa, solo ganas de explorar.",

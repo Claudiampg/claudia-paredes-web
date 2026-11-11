@@ -113,7 +113,8 @@ collections:
           - { label: Texto pequeño sobre el título, name: antetitulo, widget: string }
           - { label: Título (una línea por renglón), name: titulo, widget: text }
           - { label: Entrada, name: entrada, widget: markdown, buttons: [bold, italic, link], editor_components: [], modes: [rich_text] }
-          - label: Todos los talleres
+          - { label: "Talleres de escritura: entrada", name: escritura_entrada, widget: text, required: false, hint: "Texto bajo el título «Talleres de escritura»." }
+          - label: "Talleres de escritura: catálogo"
             name: catalogo
             widget: list
             label_singular: taller
@@ -124,13 +125,38 @@ collections:
               - { label: Nombre del taller, name: titulo, widget: string }
               - { label: Descripción, name: descripcion, widget: markdown, buttons: [bold, italic, link], editor_components: [], modes: [rich_text] }
               - { label: Modalidad, name: modalidad, widget: string, required: false }
-          - { label: "Metodología: entrada", name: metodologia_entrada, widget: text }
-          - label: "Metodología: pasos"
+          - { label: "Escritura · Metodología: entrada", name: metodologia_entrada, widget: text }
+          - label: "Escritura · Metodología: pasos"
             name: metodologia
             widget: list
             label_singular: paso
             collapsed: true
             summary: "{{fields.titulo}}"
+            fields:
+              - { label: Título, name: titulo, widget: string }
+              - { label: Texto, name: texto, widget: text }
+          - { label: "Talleres de lectura: entrada", name: lectura_entrada, widget: text, required: false, hint: "Texto bajo el título «Talleres de lectura»." }
+          - label: "Talleres de lectura: catálogo"
+            name: lectura_catalogo
+            widget: list
+            label_singular: taller de lectura
+            collapsed: true
+            summary: "{{fields.titulo}}"
+            required: false
+            hint: "Si la lista queda vacía, la sección de lectura no se muestra."
+            fields:
+              - { label: Nombre del taller, name: titulo, widget: string }
+              - { label: Descripción, name: descripcion, widget: markdown, buttons: [bold, italic, link], editor_components: [], modes: [rich_text] }
+              - { label: Modalidad, name: modalidad, widget: string, required: false }
+          - { label: "Lectura · Cómo funciona: título", name: lectura_metodologia_titulo, widget: string, required: false, default: "Cómo funciona" }
+          - { label: "Lectura · Cómo funciona: entrada", name: lectura_metodologia_entrada, widget: text, required: false }
+          - label: "Lectura · Cómo funciona: pasos"
+            name: lectura_metodologia
+            widget: list
+            label_singular: paso
+            collapsed: true
+            summary: "{{fields.titulo}}"
+            required: false
             fields:
               - { label: Título, name: titulo, widget: string }
               - { label: Texto, name: texto, widget: text }

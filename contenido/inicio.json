@@ -1,12 +1,11 @@
 {
-  "seo_titulo": "Claudia Paredes Guinand — Escritora",
-  "seo_descripcion": "Claudia Paredes Guinand, escritora y antropóloga. Autora de la novela «El país de los peces tristes» (Lumen) y de los libros de cuentos «Un lugar en la familia de las cosas» y «Aguas». Talleres de escritura creativa.",
-  "antetitulo": "Escritora · Antropóloga",
-  "titulo": "Claudia\nParedes\n*Guinand*",
-  "presentacion": "Escritora y antropóloga peruano-venezolana. Nació en Virginia, Estados Unidos, creció entre Venezuela y Perú, y se doctoró en Barcelona. Escribe sobre la migración, la identidad y el duelo de no estar en un solo lugar, desde lo íntimo y lo cotidiano. Además, imparte talleres de escritura creativa.",
-  "novedad": "*El país de los peces tristes*, su primera novela · Lumen",
   "foto": "/img/claudia.jpg",
+  "seo_descripcion": "Claudia Paredes Guinand, escritora y antropóloga. Autora de la novela «El país de los peces tristes» (Lumen) y de los libros de cuentos «Un lugar en la familia de las cosas» y «Aguas». Talleres de escritura creativa.",
+  "presentacion": "Escritora y antropóloga peruano-venezolana. Nació en Virginia, Estados Unidos, creció entre Venezuela y Perú, y se doctoró en Barcelona. Escribe sobre la migración, la identidad y el duelo, desde lo íntimo y lo cotidiano. Además, imparte talleres de escritura creativa.",
   "foto_alt": "Claudia Paredes Guinand sonríe mientras lee su libro «Un lugar en la familia de las cosas»",
+  "contacto_texto": "Para prensa, presentaciones, talleres o colaboraciones.",
+  "antetitulo": "Escritora · Antropóloga",
+  "novedad": "*El país de los peces tristes*, su primera novela · Lumen",
   "prensa": [
     {
       "medio": "El Comercio · Reseña",
@@ -27,5 +26,6 @@
       "enlace": "https://diariocorreo.pe/cultura/literatura-claudia-paredes-guinand-escritora-la-literatura-funciona-para-generar-empatia-entrevista-cuentos-colmillo-blanco-migracion-identidad-libros-noticia/"
     }
   ],
-  "contacto_texto": "Para prensa, presentaciones, talleres o colaboraciones."
+  "titulo": "Claudia\nParedes\n*Guinand*",
+  "seo_titulo": "Claudia Paredes Guinand — Escritora"
 }

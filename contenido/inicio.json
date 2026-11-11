@@ -1,0 +1,31 @@
+{
+  "seo_titulo": "Claudia Paredes Guinand — Escritora",
+  "seo_descripcion": "Claudia Paredes Guinand, escritora y antropóloga. Autora de la novela «El país de los peces tristes» (Lumen) y de los libros de cuentos «Un lugar en la familia de las cosas» y «Aguas». Talleres de escritura creativa.",
+  "antetitulo": "Escritora · Antropóloga",
+  "titulo": "Claudia\nParedes\n*Guinand*",
+  "presentacion": "Escritora y antropóloga peruano-venezolana. Nació en Virginia, Estados Unidos, creció entre Venezuela y Perú, y se doctoró en Barcelona. Escribe sobre la migración, la identidad y el duelo de no estar en un solo lugar, desde lo íntimo y lo cotidiano. Además, imparte talleres de escritura creativa.",
+  "novedad": "*El país de los peces tristes*, su primera novela · Lumen",
+  "foto": "/img/claudia.jpg",
+  "foto_alt": "Claudia Paredes Guinand sonríe mientras lee su libro «Un lugar en la familia de las cosas»",
+  "prensa": [
+    {
+      "medio": "El Comercio · Reseña",
+      "titulo": "«Todas las patrias, todas», por José Carlos Yrigoyen",
+      "fecha": "Septiembre 2025",
+      "enlace": "https://elcomercio.pe/eldominical/resenas/claudia-paredes-guinand-un-lugar-en-la-familia-de-las-cosas-todas-las-patrias-todas-la-critica-de-jose-carlos-yrigoyen-cuento-libro-noticia/"
+    },
+    {
+      "medio": "Trome",
+      "titulo": "Entre lo más destacado de la literatura de 2025",
+      "fecha": "Enero 2026",
+      "enlace": "https://trome.com/actualidad/recuento-literario-2025-lo-mas-destacado-en-novela-cuento-poesia-y-antologias-i-noticia/"
+    },
+    {
+      "medio": "Diario Correo",
+      "titulo": "«La literatura funciona para generar empatía»",
+      "fecha": "Abril 2026",
+      "enlace": "https://diariocorreo.pe/cultura/literatura-claudia-paredes-guinand-escritora-la-literatura-funciona-para-generar-empatia-entrevista-cuentos-colmillo-blanco-migracion-identidad-libros-noticia/"
+    }
+  ],
+  "contacto_texto": "Para prensa, presentaciones, talleres o colaboraciones."
+}

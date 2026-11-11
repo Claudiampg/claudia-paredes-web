@@ -1,0 +1,68 @@
+{
+  "asistir_texto": "Reserva tu plaza en una de las próximas fechas.",
+  "contratar_texto": "Para librerías, bibliotecas, centros culturales, colegios o empresas. Cuéntanos qué tienes en mente y prepararemos una propuesta.",
+  "seo_descripcion": "Talleres de escritura creativa con Claudia Paredes Guinand: próximas fechas, metodología e inscripción. También para librerías y espacios culturales.",
+  "contenido_de_ejemplo": true,
+  "fechas": [
+    {
+      "fecha": "2026-11-21",
+      "taller": "Escritura con música",
+      "lugar": "Presencial · Lugar por confirmar"
+    },
+    {
+      "fecha": "2026-12-05",
+      "taller": "Escribir desde lo cotidiano",
+      "lugar": "Online"
+    },
+    {
+      "fecha": "2026-12-12",
+      "taller": "Escritura con música",
+      "lugar": "Presencial · Lugar por confirmar"
+    },
+    {
+      "fecha": "2027-01-16",
+      "taller": "Contar la migración",
+      "lugar": "Online"
+    }
+  ],
+  "metodologia_entrada": "Se aprende a escribir escribiendo. Por eso cada sesión combina práctica, lectura y conversación, sin necesidad de experiencia previa.",
+  "catalogo": [
+    {
+      "titulo": "Escritura con música",
+      "descripcion": "Cómo construir una historia que atrape, con la música y la técnica de «mostrar, no solo contar». Cuatro vinilos guían cada parte del relato: el gancho, el inicio del viaje, el conflicto y el desenlace.",
+      "modalidad": "Presencial"
+    },
+    {
+      "titulo": "Escribir desde lo cotidiano",
+      "descripcion": "Cómo encontrar material literario en lo que nos rodea y contar lo grande a través de lo pequeño.",
+      "modalidad": "Online"
+    },
+    {
+      "titulo": "Contar la migración",
+      "descripcion": "Un espacio para escribir sobre irse, llegar y vivir entre dos lugares, a partir de la memoria personal.",
+      "modalidad": "Online"
+    }
+  ],
+  "antetitulo": "Talleres de escritura creativa",
+  "entrada": "Talleres con Claudia Paredes Guinand, escritora y antropóloga, para empezar a escribir o retomar la escritura a partir de la propia experiencia.",
+  "titulo": "Escribir\n*en compañía*",
+  "seo_titulo": "Talleres de escritura — Claudia Paredes Guinand",
+  "metodologia": [
+    {
+      "titulo": "Un detonante",
+      "texto": "Una canción, un texto o un recuerdo abren la sesión y activan la escritura."
+    },
+    {
+      "titulo": "Escritura guiada",
+      "texto": "Ejercicios breves para escribir ahí mismo, sin miedo a la hoja en blanco."
+    },
+    {
+      "titulo": "Lectura en voz alta",
+      "texto": "Quien quiere comparte lo escrito con el grupo, en un ambiente de confianza."
+    },
+    {
+      "titulo": "Conversación",
+      "texto": "Comentamos los textos con cuidado y cada persona se lleva ideas para seguir."
+    }
+  ]
+}

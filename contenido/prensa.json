@@ -1,0 +1,149 @@
+{
+  "seo_titulo": "Prensa — Claudia Paredes Guinand",
+  "seo_descripcion": "Crítica, entrevistas y apariciones de Claudia Paredes Guinand en prensa, radio y televisión, y kit de prensa con biografías, fotografía y portadas para descargar.",
+  "antetitulo": "Sala de prensa",
+  "titulo": "Prensa",
+  "entrada": "Crítica, entrevistas y apariciones de Claudia Paredes Guinand en prensa, radio y televisión, con todo el material que necesitas para escribir sobre ella y su obra.",
+  "criticas": [
+    {
+      "medio": "El Comercio · El Dominical",
+      "detalle": "Reseña · José Carlos Yrigoyen · Septiembre 2025",
+      "titulo": "«Todas las patrias, todas»",
+      "texto": "Yrigoyen reseña *Un lugar en la familia de las cosas* y destaca una sensibilidad nacida de la mezcla de Perú, Venezuela, Estados Unidos y Barcelona, el humor inteligente, la mirada crítica y la construcción de sus personajes femeninos.",
+      "enlace": "https://elcomercio.pe/eldominical/resenas/claudia-paredes-guinand-un-lugar-en-la-familia-de-las-cosas-todas-las-patrias-todas-la-critica-de-jose-carlos-yrigoyen-cuento-libro-noticia/",
+      "texto_enlace": "Leer la reseña →",
+      "principal": true
+    },
+    {
+      "medio": "LaMula.pe",
+      "detalle": "Entrevista y crítica · Carlos M. Sotomayor · Septiembre 2025",
+      "titulo": "«Me gusta escribir para lectores activos»",
+      "texto": "El crítico habla de seis relatos bien armados, con protagonistas femeninas en tránsito, y de una autora que maneja con destreza sus recursos expresivos.",
+      "enlace": "https://carlosmsotomayor.lamula.pe/2025/09/09/claudia-paredes-me-gusta-escribir-para-lectores-activos/carlossotomayor/",
+      "texto_enlace": "Leer →",
+      "principal": false
+    },
+    {
+      "medio": "Trome",
+      "detalle": "Balance del año · Enero 2026",
+      "titulo": "Lo más destacado de 2025",
+      "texto": "El recuento literario del año incluye *Un lugar en la familia de las cosas* entre los títulos destacados, por su narrativa irónica, sin moralejas y con enfoque crítico.",
+      "enlace": "https://trome.com/actualidad/recuento-literario-2025-lo-mas-destacado-en-novela-cuento-poesia-y-antologias-i-noticia/",
+      "texto_enlace": "Leer →",
+      "principal": false
+    }
+  ],
+  "cita_destacada": "«La escritura de Claudia Paredes Guinand tiene el nerviosismo y la intensidad de nuestro presente y un ritmo y una ligereza envidiables para retratar la confusión y la inestabilidad en las que nos han sumido un pasado que no acabamos de entender y un futuro lleno de incertidumbre.»",
+  "cita_destacada_autor": "Juan Pablo Villalobos, sobre su escritura",
+  "opiniones": [
+    {
+      "autor": "Jeremías Gamboa",
+      "sobre": "sobre *Un lugar en la familia de las cosas*",
+      "texto": "«Escritos con vértigo, desparpajo y humor, estos relatos intensos se presentan al lector como dispositivos urgentes ante el asomo imprevisto de la pérdida, el dolor y la oscuridad. Juntos, configuran una seductora cartografía personal y familiar que convoca las ciudades de Barcelona, Caracas y Lima en pos de un arraigo, o al menos una certeza. Un lugar. Con este libro, Paredes Guinand reclama el suyo.»",
+      "enlace": ""
+    },
+    {
+      "autor": "Kathy Serrano",
+      "sobre": "sobre *Un lugar en la familia de las cosas*",
+      "texto": "«La memoria es un animal que se repliega y acecha; y el hogar, un territorio que nunca deja de reinventarse. En *Un lugar en la familia de las cosas*, encuentros fortuitos transforman a los personajes de estos relatos íntimos y envolventes.»",
+      "enlace": ""
+    },
+    {
+      "autor": "Mario Morenza",
+      "sobre": "sobre *Aguas*",
+      "texto": "«El cuentista uruguayo Felisberto Hernández escribió en “La casa inundada” una frase que prefigura la pulsión poética de los cuentos de Paredes Guinand: “El agua es igual en todas partes y yo debo cultivar mis recuerdos en cualquier agua del mundo”. En *Aguas* leeremos cinco historias que contienen formas profundas de la intimidad, la nostalgia, los destinos aplazados, los momentos previos a las rupturas amorosas, las ausencias. Asimismo, hallaremos “aguas” en todos sus estados en una cotidianidad de aparente solidez que de a poco adquiere la densidad de la niebla, las lágrimas, el hielo o mareas donde se sacian, navegan o naufragan las emociones de los protagonistas.»",
+      "enlace": ""
+    },
+    {
+      "autor": "Elio Vélez Marquina",
+      "sobre": "sobre *Aguas* (texto preliminar)",
+      "texto": "",
+      "enlace": "https://www.linkedin.com/pulse/preliminar-para-aguas-de-claudia-paredes-guinand-elio-v%C3%83%C2%A9lez-marquina/"
+    }
+  ],
+  "entrevistas": [
+    {
+      "medio": "Diario Correo",
+      "titulo": "«La literatura funciona para generar empatía»",
+      "fecha": "Abril 2026",
+      "enlace": "https://diariocorreo.pe/cultura/literatura-claudia-paredes-guinand-escritora-la-literatura-funciona-para-generar-empatia-entrevista-cuentos-colmillo-blanco-migracion-identidad-libros-noticia/"
+    },
+    {
+      "medio": "ADN Literatura",
+      "titulo": "Entrevista a la escritora peruana-venezolana Claudia Paredes Guinand",
+      "fecha": "Marzo 2026",
+      "enlace": "https://adnliteratura.substack.com/p/entrevista-a-la-escritora-peruana"
+    },
+    {
+      "medio": "Epicentro TV · Vídeo",
+      "titulo": "«Un lugar en la familia de las cosas», conversación en Hora de Leer",
+      "fecha": "Enero 2026",
+      "enlace": "https://epicentro.tv/un-lugar-en-la-familia-de-las-cosas-de-claudia-paredes/"
+    },
+    {
+      "medio": "Perú21",
+      "titulo": "«Me gusta cuando lo íntimo te puede dar señales sobre lo social»",
+      "fecha": "Diciembre 2025",
+      "enlace": "https://peru21.pe/cultura/claudia-paredes-en-la-feria-internacional-del-libro-de-guadalajara/"
+    },
+    {
+      "medio": "Radio Nacional · Entrelibros",
+      "titulo": "Claudia Paredes Guinand presenta «Un lugar en la familia de las cosas»",
+      "fecha": "Agosto 2025",
+      "enlace": "https://www.youtube.com/watch?v=ID1RSEc-tS0"
+    },
+    {
+      "medio": "El Diario · Venezuela",
+      "titulo": "«La fiesta del sol»: una tesis defendida en cuarentena",
+      "fecha": "Agosto 2020",
+      "enlace": "https://eldiario.com/2020/08/09/la-fiesta-del-sol-una-tesis-defendida-en-cuarentena/"
+    }
+  ],
+  "apariciones": [
+    {
+      "medio": "Lata Fest · Barcelona",
+      "titulo": "Taller de escritura creativa en el Festival de Cultura Latinoamericana",
+      "fecha": "Septiembre 2026",
+      "enlace": "https://latapeinada.com/lata-fest-2026-festival-cultura-latinoamericana-barcelona/"
+    },
+    {
+      "medio": "Perú21",
+      "titulo": "Taller de escritura con música en la librería Book Vivant",
+      "fecha": "Junio 2026",
+      "enlace": "https://peru21.pe/cultura/claudia-paredes-presenta-taller-de-escritura-con-musica-en-book-vivant/"
+    },
+    {
+      "medio": "El Comercio · El Dominical",
+      "titulo": "Cinco autores venezolanos analizan el futuro de su país",
+      "fecha": "Enero 2026",
+      "enlace": "https://elcomercio.pe/eldominical/actualidad/venezuela-despues-de-nicolas-maduro-cinco-autores-venezolanos-analizan-el-futuro-de-su-pais-tras-la-caida-de-maduro-noticia/"
+    },
+    {
+      "medio": "Hay Festival",
+      "titulo": "Perfil de la autora",
+      "fecha": "",
+      "enlace": "https://www.hayfestival.com/artist.aspx?artistid=12521"
+    }
+  ],
+  "bio_corta": "Claudia Paredes Guinand (Virginia, 1991) es escritora y antropóloga peruano-venezolana, doctora en Humanidades. Es autora de la novela *El país de los peces tristes* (Lumen, 2026) y de los libros de cuentos *Aguas* (2022) y *Un lugar en la familia de las cosas* (2025).",
+  "bio_larga": "Claudia Paredes Guinand (Virginia, 1991) es escritora y antropóloga peruano-venezolana. Creció entre Venezuela y Perú. Estudió antropología sociocultural en la Pontificia Universidad Católica del Perú y en la Universitat Autònoma de Barcelona, cursó un máster en Creación Literaria y otro en Literatura, Arte y Pensamiento Comparados en la Universitat Pompeu Fabra, y es doctora en Humanidades por esa misma universidad, donde también ha sido docente. Su tesis doctoral estudia la política y la literatura en el Perú del fujimorismo y la Venezuela del chavismo.\n\nEs autora de la novela *El país de los peces tristes* (Lumen, 2026) y de los libros de cuentos *Aguas* (Mitos Magazín, 2022) y *Un lugar en la familia de las cosas* (Colmillo Blanco, 2025), reseñado en *El Comercio* y elegido por *Trome* entre lo más destacado de 2025. Ha publicado relatos en revistas como *El Vuelto* y *Mercurio*, escribe en medios como *El Comercio* e imparte talleres literarios.",
+  "descargas": [
+    {
+      "nombre": "Retrato de la autora",
+      "imagen": "/img/claudia.jpg"
+    },
+    {
+      "nombre": "El país de los peces tristes",
+      "imagen": "/img/portada-peces-tristes.jpg"
+    },
+    {
+      "nombre": "Un lugar en la familia de las cosas",
+      "imagen": "/img/portada-un-lugar.jpg"
+    },
+    {
+      "nombre": "Aguas",
+      "imagen": "/img/portada-aguas.jpg"
+    }
+  ],
+  "invitacion": "¿Quieres entrevistar a Claudia\no necesitas más material?"
+}

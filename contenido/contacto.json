@@ -1,0 +1,18 @@
+{
+  "seo_titulo": "Contacto — Claudia Paredes Guinand",
+  "seo_descripcion": "Contacta con Claudia Paredes Guinand para prensa, presentaciones, clubes de lectura, talleres o colaboraciones.",
+  "antetitulo": "Contacto",
+  "titulo": "Hablemos",
+  "entrada": "Para prensa, presentaciones, clubes de lectura, talleres o colaboraciones. Elige el motivo y cuéntanos qué tienes en mente.",
+  "motivos": [
+    { "titulo": "Prensa", "texto": "Entrevistas, reseñas y solicitudes de material sobre Claudia y su obra.", "motivo": "Prensa", "enlace_texto": "Ver kit de prensa", "enlace": "prensa.html#kit" },
+    { "titulo": "Presentaciones", "texto": "Invítala a una librería, festival, universidad o club de lectura.", "motivo": "Presentación o club de lectura", "enlace_texto": "", "enlace": "" },
+    { "titulo": "Talleres", "texto": "Apúntate a un taller o llévalo a tu librería o espacio cultural.", "motivo": "Talleres", "enlace_texto": "Ver talleres", "enlace": "talleres.html" },
+    { "titulo": "Sus libros", "texto": "Dudas sobre dónde encontrar sus libros, derechos o traducciones.", "motivo": "Libros", "enlace_texto": "Ver obra", "enlace": "obra.html" }
+  ],
+  "editoriales": [
+    { "nombre": "Lumen", "libro": "El país de los peces tristes", "enlace": "https://www.penguinlibros.com/co/40847-lumen" },
+    { "nombre": "Colmillo Blanco", "libro": "Un lugar en la familia de las cosas", "enlace": "" },
+    { "nombre": "Mitos Magazín", "libro": "Aguas", "enlace": "" }
+  ]
+}

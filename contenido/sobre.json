@@ -1,0 +1,36 @@
+{
+  "seo_titulo": "Sobre Claudia — Claudia Paredes Guinand",
+  "seo_descripcion": "La historia de Claudia Paredes Guinand, escritora y antropóloga peruano-venezolana: de Virginia a Venezuela, Perú y Barcelona, y de la academia a la literatura.",
+  "antetitulo": "Sobre la autora",
+  "titulo": "Claudia\nParedes\n*Guinand*",
+  "entrada": "Claudia Paredes Guinand es escritora y antropóloga peruano-venezolana. Nació en Estados Unidos, creció entre Venezuela y Perú, se formó en Barcelona y dejó la academia para dedicarse a la literatura.",
+  "foto": "/img/claudia.jpg",
+  "foto_alt": "Claudia Paredes Guinand sonríe mientras lee su libro «Un lugar en la familia de las cosas»",
+  "historia": "Antes de saber leer, ya fingía que leía. De niña, en Venezuela, escuchaba una y otra vez la grabación de *El cascanueces* que tenía su madre, hasta memorizarla. Delante de la familia pasaba las páginas y recitaba el cuento como si lo estuviera leyendo. La escritura llegó después, en Perú, gracias a su abuela peruana, que le decía «escribes bonito, escribe más».\n\nVivió en Perú hasta los 20 años y se marchó a Barcelona para continuar sus estudios de antropología con una mirada más global. Se quedó catorce años. Allí cursó dos másteres, uno de ellos en creación literaria, se doctoró en Humanidades con una tesis que compara el fujimorismo y el chavismo a través de la ficción y fue docente en la Universitat Pompeu Fabra.\n\nEntonces sintió que había tocado techo en la academia y tomó la decisión de dedicarse de lleno a la escritura. Volvió a Lima, donde publica, escribe e imparte talleres de lectura y escritura.",
+  "datos": [
+    { "etiqueta": "Nacionalidad", "valor": "Peruano-venezolana" },
+    { "etiqueta": "Nacimiento", "valor": "Virginia, EE. UU., 1991" },
+    { "etiqueta": "Ha vivido en", "valor": "Venezuela · Perú · España" },
+    { "etiqueta": "Libros", "valor": "Una novela y dos libros de cuentos" }
+  ],
+  "cita": "«Me siento, por fin, encontrando un lugar, el de escritora.»",
+  "cita_fuente": "— Claudia Paredes Guinand, entrevista en *Perú21*, 2025",
+  "recorrido": [
+    { "cuando": "1991", "texto": "Nace en Virginia, Estados Unidos, de padre peruano y madre venezolana." },
+    { "cuando": "Infancia", "texto": "Sus primeros años transcurren en Venezuela. Después se traslada a Perú." },
+    { "cuando": "A los 20", "texto": "Se va a Barcelona, donde se doctora en Humanidades y es docente en la Universitat Pompeu Fabra." },
+    { "cuando": "2022", "texto": "Publica su primer libro, [*Aguas*](obra.html#aguas) (Mitos Magazín)." },
+    { "cuando": "2025", "texto": "Publica [*Un lugar en la familia de las cosas*](obra.html#un-lugar) (Colmillo Blanco), que llega a las ferias del libro de Lima y Guadalajara, y regresa a Lima tras catorce años." },
+    { "cuando": "2026", "texto": "Publica su primera novela, [*El país de los peces tristes*](obra.html#novela) (Lumen)." }
+  ],
+  "escritura_frase": "Lo social entra por la puerta de lo íntimo.",
+  "escritura_texto": "Su formación como antropóloga está presente en lo que cuenta, pero no en cómo lo cuenta: en lugar de un tono teórico, escribe con ironía y humor, y deja que la realidad política y social aparezca con sutileza en la vida cotidiana de sus personajes.",
+  "temas": ["Migración", "Pertenencia", "Duelo", "Familia", "Maternidad", "Clasismo", "Racismo", "Xenofobia", "Ser mujer hoy"],
+  "formacion": [
+    "Antropología sociocultural · Pontificia Universidad Católica del Perú y Universitat Autònoma de Barcelona",
+    "Máster en Creación Literaria · Universitat Pompeu Fabra",
+    "Máster en Literatura, Arte y Pensamiento Comparados · Universitat Pompeu Fabra",
+    "Doctorado en Humanidades · Universitat Pompeu Fabra",
+    "Docente · Universitat Pompeu Fabra"
+  ]
+}

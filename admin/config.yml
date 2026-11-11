@@ -169,7 +169,9 @@ collections:
               - { label: Nota (edición, ferias…), name: nota, widget: text, required: false }
               - { label: Temas, name: temas, widget: list, required: false, field: { label: Tema, name: tema, widget: string } }
               - { label: Enlace de compra, name: enlace_compra, widget: string, required: false, hint: "Si lo dejas vacío, el botón lleva a «Dónde conseguirlo» en Contacto." }
-              - { label: Texto del botón de compra, name: texto_compra, widget: string, required: false, hint: "Por ejemplo: Comprar en Penguin Libros" }
+              - { label: Texto del botón de compra, name: texto_compra, widget: string, required: false, hint: "Por ejemplo: Comprar en Kindle (Amazon)" }
+              - { label: Segundo enlace de compra (opcional), name: enlace_compra_2, widget: string, required: false, hint: "Por ejemplo, la edición en papel. Sustituye al botón «Ver ficha completa» en la portada y a «Kit de prensa» en Obra." }
+              - { label: Texto del segundo botón, name: texto_compra_2, widget: string, required: false, hint: "Por ejemplo: Comprar en Penguin Libros" }
               - { label: "Solo libro destacado: título en dos líneas", name: titulo_destacado, widget: text, required: false, hint: "Lo que va entre *asteriscos* sale en cursiva." }
               - { label: "Solo libro destacado: etiqueta", name: etiqueta, widget: string, required: false, hint: "Por ejemplo: Novedad · Novela · Lumen · 2026" }
 

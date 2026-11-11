@@ -196,7 +196,7 @@ def pagina(archivo, seo_titulo, seo_descripcion, cuerpo, scripts=("site.js",),
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
-<body data-correo="{correo}">
+<body>
 
 <header class="nav">
   <a href="{marca_href}" class="nav__brand">{marca}</a>
@@ -217,7 +217,7 @@ def pagina(archivo, seo_titulo, seo_descripcion, cuerpo, scripts=("site.js",),
 {datos}{js}</body>
 </html>
 """.format(titulo=esc(seo_titulo), desc=esc(seo_descripcion),
-           imagen=esc(ruta_img(imagen or AJUSTES.get("imagen_compartir"))), correo=esc(CORREO),
+           imagen=esc(ruta_img(imagen or AJUSTES.get("imagen_compartir"))),
            marca_href="#inicio" if inicio else "index.html", marca=esc(AJUSTES.get("nombre_corto", NOMBRE)),
            menu=menu, cuerpo=cuerpo.strip("\n"), nombre=esc(NOMBRE), datos=datos, js=js)
 
@@ -404,7 +404,7 @@ def campo(pre, id_, etiqueta, control):
 
 
 def formulario(id_, nombre_netlify, asunto, clase, titulo_tag, titulo, entrada, campos, boton, boton_clase, sent_extra):
-    """Formulario que llega por Netlify Forms; si no está disponible, abre el correo."""
+    """Formulario que llega por Netlify Forms (el correo de Claudia no se muestra en la web)."""
     lead = '\n        <p class="join-form__lead">%s</p>' % inline(entrada) if entrada else ""
     return """      <form id="{id}" name="{nombre}" class="{clase}" data-asunto="{asunto}" method="POST" data-netlify="true" netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="{nombre}">
@@ -415,10 +415,10 @@ def formulario(id_, nombre_netlify, asunto, clase, titulo_tag, titulo, entrada, 
         <button type="submit" class="{boton_clase}">{boton}</button>
         <p class="join-form__hint">Te responderemos lo antes posible.</p>
         <p class="join-form__sent join-form__sent--ok" role="status" hidden>¡Gracias! Hemos recibido tu mensaje y te responderemos pronto.</p>
-        <p class="join-form__sent join-form__sent--error" role="status" hidden>No se ha podido enviar desde la web, así que se ha abierto tu correo con el mensaje ya escrito. Si no se abre, escribe a <a href="{mailto}">{correo}</a>{extra}.</p>
+        <p class="join-form__sent join-form__sent--error" role="status" hidden>No se ha podido enviar el mensaje. Comprueba tu conexión e inténtalo de nuevo en unos minutos.</p>
       </form>""".format(id=id_, nombre=nombre_netlify, clase=clase, asunto=esc(asunto), tt=titulo_tag, titulo=titulo,
                         lead=lead, campos="\n".join(campos), boton_clase=boton_clase, boton=boton,
-                        mailto=esc(mailto()), correo=esc(CORREO), extra=sent_extra)
+                        )
 
 
 def pagina_talleres():
@@ -724,7 +724,7 @@ def pagina_prensa():
     <a href="{contacto}" class="btn btn--light">Escríbenos</a>
   </section>""".format(
         antetitulo=esc(p.get("antetitulo")), titulo=inline(p.get("titulo")), entrada=inline(p.get("entrada")),
-        entrevista=esc(mailto("Solicitud de entrevista")), criticas=criticas, destacada=destacada,
+        entrevista=esc(contacto_url("Prensa")), criticas=criticas, destacada=destacada,
         opiniones="\n".join(opiniones), entrevistas=lista_prensa(p.get("entrevistas", [])),
         apariciones=lista_prensa(p.get("apariciones", [])), bio_corta=bio("bio-corta", p.get("bio_corta")),
         bio_larga=bio("bio-larga", p.get("bio_larga")), descargas="\n".join(descargas),
@@ -843,7 +843,6 @@ def pagina_contacto():
     editoriales = "\n".join("            <li>%s <span>%s</span></li>" % (
         externo(e["enlace"], esc(e.get("nombre"))) if e.get("enlace") else esc(e.get("nombre")), esc(e.get("libro")))
         for e in c.get("editoriales", []))
-    nota_correo = '\n          <p class="sample-note">Dirección provisional, pendiente de confirmar</p>' if AJUSTES.get("correo_provisional") else ""
     cuerpo = """  <!-- CABECERA -->
   <section class="page-hero">
     <p class="eyebrow">{antetitulo}</p>
@@ -866,10 +865,6 @@ def pagina_contacto():
       <aside class="contact-side">
         <h2 class="visually-hidden">Otras formas de contacto</h2>
         <div class="contact-side__block">
-          <h3>Correo</h3>{nota}
-          <a class="contact-side__mail" href="{mailto}">{correo}</a>
-        </div>
-        <div class="contact-side__block">
           <h3>Redes</h3>
           {instagram}
         </div>
@@ -883,7 +878,7 @@ def pagina_contacto():
     </div>
   </section>""".format(
         antetitulo=esc(c.get("antetitulo")), titulo=inline(c.get("titulo")), entrada=inline(c.get("entrada")),
-        tarjetas="\n".join(tarjetas), form=form, nota=nota_correo, mailto=esc(mailto()), correo=esc(CORREO),
+        tarjetas="\n".join(tarjetas), form=form,
         instagram=externo(AJUSTES.get("instagram_url"), "Instagram · " + esc(AJUSTES.get("instagram_usuario"))),
         editoriales=editoriales)
     return pagina("contacto.html", c.get("seo_titulo"), c.get("seo_descripcion"), cuerpo)

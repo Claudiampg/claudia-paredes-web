@@ -1,8 +1,5 @@
 /* Comportamiento común a todas las páginas */
 
-/* El correo de contacto se edita en el panel (Ajustes generales) y llega en <body data-correo> */
-const CORREO_CONTACTO = document.body.dataset.correo || '';
-
 document.getElementById('year').textContent = new Date().getFullYear();
 
 const navToggle = document.querySelector('.nav__toggle'), navLinks = document.querySelector('.nav__links');
@@ -37,22 +34,11 @@ document.querySelectorAll('[data-copy]').forEach(btn => btn.addEventListener('cl
   setTimeout(() => { btn.textContent = 'Copiar'; }, 2000);
 }));
 
-/* Formularios: se envían con Netlify Forms. Si no se puede (por ejemplo, al abrir
-   la web en local), se abre el correo de la persona con el mensaje ya escrito. */
+/* Formularios: se envían con Netlify Forms. El correo de Claudia no aparece en la web. */
 function asuntoDe(form) {
   const motivo = form.querySelector('[name="motivo"]');
   const base = motivo ? motivo.value : form.dataset.asunto;
   return base + ' — ' + form.querySelector('[name="nombre"]').value.trim();
-}
-
-function construirMailto(form) {
-  const lineas = [...form.querySelectorAll('input, select, textarea')]
-    .map(c => ({ c, label: c.id && form.querySelector('label[for="' + c.id + '"]') }))
-    .filter(({ c, label }) => label && c.value.trim())
-    .map(({ c, label }) => label.textContent + ': ' + c.value.trim());
-  return 'mailto:' + CORREO_CONTACTO +
-    '?subject=' + encodeURIComponent(asuntoDe(form)) +
-    '&body=' + encodeURIComponent(lineas.join('\n'));
 }
 
 document.querySelectorAll('.join-form').forEach(form => form.addEventListener('submit', async e => {
@@ -75,7 +61,6 @@ document.querySelectorAll('.join-form').forEach(form => form.addEventListener('s
     ok.hidden = false;
   } catch (_) {
     error.hidden = false;
-    location.href = construirMailto(form);
   } finally {
     boton.disabled = false;
   }

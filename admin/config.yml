@@ -104,17 +104,18 @@ collections:
             label_singular: fecha
             add_to_top: true
             collapsed: true
-            summary: "{{fields.fecha}} — {{fields.taller}}"
+            summary: "{{fields.fecha}} — {{fields.tipo}}: {{fields.taller}}"
             hint: "Aparecen en el calendario de la portada y de Talleres. Las fechas pasadas se ocultan solas, así que no hace falta borrarlas."
             fields:
               - { label: Fecha, name: fecha, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
+              - { label: Tipo, name: tipo, widget: select, options: ["Taller de lectura", "Taller de escritura"], required: false, hint: "Aparece encima del título en el calendario y decide en qué apartado (lectura o escritura) sale como próxima sesión." }
               - { label: Taller, name: taller, widget: string }
               - { label: Modalidad y lugar, name: lugar, widget: string, hint: "Por ejemplo: Presencial · Librería Book Vivant, Lima" }
           - { label: Texto pequeño sobre el título, name: antetitulo, widget: string }
           - { label: Título (una línea por renglón), name: titulo, widget: text }
           - { label: Entrada, name: entrada, widget: markdown, buttons: [bold, italic, link], editor_components: [], modes: [rich_text] }
-          - { label: "Talleres de escritura: entrada", name: escritura_entrada, widget: text, required: false, hint: "Texto bajo el título «Talleres de escritura»." }
-          - label: "Talleres de escritura: catálogo"
+          - { label: "Talleres de escritura: entrada", name: escritura_entrada, widget: text, required: false, hint: "Aparece bajo el título «Talleres de escritura»." }
+          - label: "Talleres de escritura: talleres realizados"
             name: catalogo
             widget: list
             label_singular: taller
@@ -125,8 +126,8 @@ collections:
               - { label: Nombre del taller, name: titulo, widget: string }
               - { label: Descripción, name: descripcion, widget: markdown, buttons: [bold, italic, link], editor_components: [], modes: [rich_text] }
               - { label: Modalidad, name: modalidad, widget: string, required: false }
-          - { label: "Escritura · Metodología: entrada", name: metodologia_entrada, widget: text }
-          - label: "Escritura · Metodología: pasos"
+          - { label: "Talleres de escritura · Metodología: entrada", name: metodologia_entrada, widget: text }
+          - label: "Talleres de escritura · Metodología: pasos"
             name: metodologia
             widget: list
             label_singular: paso
@@ -135,22 +136,45 @@ collections:
             fields:
               - { label: Título, name: titulo, widget: string }
               - { label: Texto, name: texto, widget: text }
-          - { label: "Talleres de lectura: entrada", name: lectura_entrada, widget: text, required: false, hint: "Texto bajo el título «Talleres de lectura»." }
-          - label: "Talleres de lectura: catálogo"
+          - { label: "Talleres de lectura: entrada", name: lectura_entrada, widget: text, required: false, hint: "Aparece bajo el título «Talleres de lectura»." }
+          - label: "Talleres de lectura: formato"
             name: lectura_catalogo
             widget: list
             label_singular: taller de lectura
             collapsed: true
             summary: "{{fields.titulo}}"
             required: false
-            hint: "Si la lista queda vacía, la sección de lectura no se muestra."
+            hint: "Por ejemplo, «Seis libros en seis meses» con su descripción."
             fields:
               - { label: Nombre del taller, name: titulo, widget: string }
               - { label: Descripción, name: descripcion, widget: markdown, buttons: [bold, italic, link], editor_components: [], modes: [rich_text] }
               - { label: Modalidad, name: modalidad, widget: string, required: false }
-          - { label: "Lectura · Cómo funciona: título", name: lectura_metodologia_titulo, widget: string, required: false, default: "Cómo funciona" }
-          - { label: "Lectura · Cómo funciona: entrada", name: lectura_metodologia_entrada, widget: text, required: false }
-          - label: "Lectura · Cómo funciona: pasos"
+          - label: "Talleres de lectura · Temporadas realizadas"
+            name: lectura_temporadas
+            widget: list
+            label_singular: temporada
+            add_to_top: true
+            collapsed: true
+            summary: "{{fields.titulo}} — {{fields.periodo}}"
+            required: false
+            hint: "Se muestran de la más reciente a la más antigua. La que está en curso se marca sola y las sesiones pasadas se atenúan."
+            fields:
+              - { label: Nombre de la temporada, name: titulo, widget: string, hint: "Por ejemplo: Ay, ¿el amor?" }
+              - { label: Periodo, name: periodo, widget: string, hint: "Por ejemplo: Julio–diciembre de 2026" }
+              - { label: Día y hora, name: horario, widget: string, required: false, hint: "Por ejemplo: Último miércoles del mes · 12:00 Lima" }
+              - { label: Nota (opcional), name: nota, widget: string, required: false }
+              - label: Libros
+                name: libros
+                widget: list
+                label_singular: libro
+                summary: "{{fields.fecha}} — {{fields.libro}}"
+                fields:
+                  - { label: Fecha de la sesión, name: fecha, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
+                  - { label: Libro, name: libro, widget: string }
+                  - { label: Autor o autora, name: autor, widget: string }
+                  - { label: País (opcional), name: pais, widget: string, required: false }
+          - { label: "Talleres de lectura · Metodología: entrada", name: lectura_metodologia_entrada, widget: text, required: false }
+          - label: "Talleres de lectura · Metodología: pasos"
             name: lectura_metodologia
             widget: list
             label_singular: paso

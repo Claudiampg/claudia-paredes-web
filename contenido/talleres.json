@@ -1,7 +1,7 @@
 {
   "asistir_texto": "Reserva tu plaza en una de las próximas fechas.",
   "contratar_texto": "Para librerías, bibliotecas, centros culturales, colegios o empresas. Cuéntanos qué tienes en mente y prepararemos una propuesta.",
-  "seo_descripcion": "Talleres de escritura creativa con Claudia Paredes Guinand: próximas fechas, metodología e inscripción. También para librerías y espacios culturales.",
+  "seo_descripcion": "Talleres de escritura creativa y de lectura con Claudia Paredes Guinand: próximas fechas, metodología e inscripción. También para librerías y espacios culturales.",
   "contenido_de_ejemplo": true,
   "fechas": [
     {
@@ -15,8 +15,13 @@
       "lugar": "Online, Zoom"
     }
   ],
-  "metodologia_entrada": "Se aprende a escribir escribiendo. Por eso cada sesión combina práctica, lectura y conversación, sin necesidad de experiencia previa.",
+  "metodologia_entrada": "Se aprende a escribir escribiendo. Leemos a distintas autoras y autores, pero el enfoque es práctico: escribir, soltar la mano y mejorar con la mirada del grupo. No hace falta experiencia previa, solo ganas de explorar.",
   "catalogo": [
+    {
+      "titulo": "Entre lo real y lo inventado",
+      "descripcion": "Una introducción a la escritura desde distintos registros: del más formal, para expresar opiniones, al más creativo, para compartir lo que inventas. Cuestiona las etiquetas clásicas del ensayo y la crónica para dar más libertad a cada texto, y usa la escritura para describir y entender la sociedad que nos rodea o aquellas que nos fascinan. Seis sesiones de hora y media.",
+      "modalidad": "Online"
+    },
     {
       "titulo": "Escritura con música",
       "descripcion": "Cómo construir una historia que atrape, con la música y la técnica de «mostrar, no solo contar». Cuatro vinilos guían cada parte del relato: el gancho, el inicio del viaje, el conflicto y el desenlace.",
@@ -33,26 +38,55 @@
       "modalidad": "Online"
     }
   ],
-  "antetitulo": "Talleres de escritura creativa",
-  "entrada": "Talleres con Claudia Paredes Guinand, escritora y antropóloga, para empezar a escribir o retomar la escritura a partir de la propia experiencia.",
-  "titulo": "Escribir\n*en compañía*",
-  "seo_titulo": "Talleres de escritura — Claudia Paredes Guinand",
+  "antetitulo": "Talleres de lectura y escritura",
+  "entrada": "Talleres con Claudia Paredes Guinand, escritora y antropóloga: de escritura, para contar entre lo real y lo inventado, y de lectura, para crear el hábito de leer y descubrir literaturas de todo el mundo.",
+  "titulo": "Leer y escribir\n*en compañía*",
+  "seo_titulo": "Talleres de lectura y escritura — Claudia Paredes Guinand",
   "metodologia": [
     {
-      "titulo": "Un detonante",
-      "texto": "Una canción, un texto o un recuerdo abren la sesión y activan la escritura."
+      "titulo": "Una lectura de ejemplo",
+      "texto": "Cada sesión parte de un texto que muestra un género. Al inscribirte recibes también material complementario."
     },
     {
-      "titulo": "Escritura guiada",
-      "texto": "Ejercicios breves para escribir ahí mismo, sin miedo a la hoja en blanco."
+      "titulo": "Escribir entre sesiones",
+      "texto": "Después de cada clase escribes tu propio texto y llegas con él a la siguiente."
     },
     {
-      "titulo": "Lectura en voz alta",
-      "texto": "Quien quiere comparte lo escrito con el grupo, en un ambiente de confianza."
+      "titulo": "Leer a los compañeros",
+      "texto": "Los textos circulan en el grupo y cada persona prepara un breve párrafo de opinión."
     },
     {
-      "titulo": "Conversación",
-      "texto": "Comentamos los textos con cuidado y cada persona se lleva ideas para seguir."
+      "titulo": "Revisión en clase",
+      "texto": "Comentamos los textos junto con la lectura y sus temas, para compartir, aprender y mejorar."
+    }
+  ],
+  "escritura_entrada": "¿Quieres escribir sobre un tema que te ronda hace tiempo? ¿Relatar una escena, hilarante o indignante, que viste hace poco? ¿Contar tu vida o la de un ser querido en forma de ficción?",
+  "lectura_entrada": "¿Te gusta leer? Te falta leer. Un taller por semestre para leer en compañía y conversar sobre lo leído.",
+  "lectura_catalogo": [
+    {
+      "titulo": "Seis libros en seis meses",
+      "descripcion": "Cada temporada leemos seis libros, uno al mes, unidos por una temática. Además de crear un hábito de lectura, conocerás a autoras y autores de distintas nacionalidades y tradiciones literarias.\n\nUna temporada por semestre. Las sesiones son online, el último miércoles de cada mes a las 12:00 (hora de Lima), y duran hora y media.",
+      "modalidad": "Online · Una temporada por semestre"
+    }
+  ],
+  "lectura_metodologia_titulo": "Cómo funciona",
+  "lectura_metodologia_entrada": "Cada sesión combina las opiniones de quienes leen con el análisis de la narrativa y de los temas sociales del libro.",
+  "lectura_metodologia": [
+    {
+      "titulo": "Un libro al mes",
+      "texto": "Seis libros por temporada, unidos por una temática."
+    },
+    {
+      "titulo": "Literaturas del mundo",
+      "texto": "Autoras y autores de distintas nacionalidades y tradiciones literarias."
+    },
+    {
+      "titulo": "Tu opinión en una frase",
+      "texto": "Antes de cada sesión envías tu opinión resumida en una sola oración, para ejercitar el pensamiento crítico y la síntesis."
+    },
+    {
+      "titulo": "Conversación y análisis",
+      "texto": "Hora y media para comentar las opiniones y analizar la narrativa y los temas sociales del libro."
     }
   ]
 }

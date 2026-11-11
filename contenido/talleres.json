@@ -5,24 +5,14 @@
   "contenido_de_ejemplo": true,
   "fechas": [
     {
-      "fecha": "2026-11-21",
-      "taller": "Escritura con música",
-      "lugar": "Presencial · Lugar por confirmar"
+      "taller": "Comienzo de taller de lectura 6 libros en 6 meses: \"A Nobelear\"",
+      "fecha": "2027-01-27",
+      "lugar": "Online - Zoom"
     },
     {
-      "fecha": "2026-12-05",
-      "taller": "Escribir desde lo cotidiano",
-      "lugar": "Online"
-    },
-    {
-      "fecha": "2026-12-12",
-      "taller": "Escritura con música",
-      "lugar": "Presencial · Lugar por confirmar"
-    },
-    {
-      "fecha": "2027-01-16",
-      "taller": "Contar la migración",
-      "lugar": "Online"
+      "fecha": "2026-11-26",
+      "taller": "6 libros en 6 meses: Ay, ¿el amor? Sesión 5: In Cold Blood",
+      "lugar": "Online, Zoom"
     }
   ],
   "metodologia_entrada": "Se aprende a escribir escribiendo. Por eso cada sesión combina práctica, lectura y conversación, sin necesidad de experiencia previa.",

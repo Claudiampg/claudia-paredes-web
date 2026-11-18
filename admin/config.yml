@@ -5,6 +5,10 @@ backend:
   name: github
   repo: Claudiampg/claudia-paredes-web
   branch: main
+  # El inicio de sesión con GitHub pasa por el servicio OAuth gratuito de Netlify
+  # (la web ya no se aloja allí: se publica con GitHub Pages).
+  base_url: https://api.netlify.com
+  site_domain: claudiaparedesguinand.netlify.app
   commit_messages:
     update: "Panel: cambios en {{slug}}"
     uploadMedia: "Panel: sube {{path}}"
@@ -368,7 +372,7 @@ collections:
         name: ajustes
         file: contenido/ajustes.json
         fields:
-          - { label: Correo de contacto, name: correo, widget: string, hint: "No se muestra en la web: los mensajes llegan solo por los formularios. El aviso por correo se cambia en Netlify (Forms → Submission notifications)." }
+          - { label: "Formularios: clave de Web3Forms", name: clave_formularios, widget: string, hint: "Los mensajes de los formularios llegan al correo con el que se creó esta clave en web3forms.com. Para recibirlos en otro correo, crea allí una clave nueva y pégala aquí." }
           - { label: Instagram (enlace), name: instagram_url, widget: string }
           - { label: Instagram (usuario), name: instagram_usuario, widget: string }
           - { label: Nombre completo, name: nombre, widget: string }

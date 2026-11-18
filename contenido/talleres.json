@@ -19,7 +19,37 @@
     {
       "fecha": "2027-01-27",
       "tipo": "Taller de lectura",
-      "taller": "6 libros en 6 meses: A Nobelear. Sesión 1",
+      "taller": "6 libros en 6 meses: A Nobelear. Sesión 1: El acontecimiento",
+      "lugar": "Online, Zoom"
+    },
+    {
+      "fecha": "2027-02-24",
+      "tipo": "Taller de lectura",
+      "taller": "6 libros en 6 meses: A Nobelear. Sesión 2: Crónica de una muerte anunciada",
+      "lugar": "Online, Zoom"
+    },
+    {
+      "fecha": "2027-03-31",
+      "tipo": "Taller de lectura",
+      "taller": "6 libros en 6 meses: A Nobelear. Sesión 3: Beloved",
+      "lugar": "Online, Zoom"
+    },
+    {
+      "fecha": "2027-04-28",
+      "tipo": "Taller de lectura",
+      "taller": "6 libros en 6 meses: A Nobelear. Sesión 4: Las abuelas",
+      "lugar": "Online, Zoom"
+    },
+    {
+      "fecha": "2027-05-26",
+      "tipo": "Taller de lectura",
+      "taller": "6 libros en 6 meses: A Nobelear. Sesión 5: El castillo blanco",
+      "lugar": "Online, Zoom"
+    },
+    {
+      "fecha": "2027-06-30",
+      "tipo": "Taller de lectura",
+      "taller": "6 libros en 6 meses: A Nobelear. Sesión 6: Desgracia",
       "lugar": "Online, Zoom"
     }
   ],
@@ -98,6 +128,50 @@
     }
   ],
   "lectura_temporadas": [
+    {
+      "titulo": "A Nobelear",
+      "periodo": "Enero–junio de 2027",
+      "horario": "Último miércoles del mes · 12:00 Lima",
+      "nota": "",
+      "libros": [
+        {
+          "fecha": "2027-01-27",
+          "libro": "El acontecimiento",
+          "autor": "Annie Ernaux",
+          "pais": "Francia"
+        },
+        {
+          "fecha": "2027-02-24",
+          "libro": "Crónica de una muerte anunciada",
+          "autor": "Gabriel García Márquez",
+          "pais": "Colombia"
+        },
+        {
+          "fecha": "2027-03-31",
+          "libro": "Beloved",
+          "autor": "Toni Morrison",
+          "pais": "EEUU"
+        },
+        {
+          "fecha": "2027-04-28",
+          "libro": "Las abuelas",
+          "autor": "Doris Lessing",
+          "pais": "Inglaterra"
+        },
+        {
+          "fecha": "2027-05-26",
+          "libro": "El castillo blanco",
+          "autor": "Orhan Pamuk",
+          "pais": "Turquía"
+        },
+        {
+          "fecha": "2027-06-30",
+          "libro": "Desgracia",
+          "autor": "J.M. Coetzee",
+          "pais": "Sudáfrica"
+        }
+      ]
+    },
     {
       "titulo": "Ay, ¿el amor?",
       "periodo": "Julio–diciembre de 2026",

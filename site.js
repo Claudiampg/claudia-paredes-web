@@ -34,7 +34,8 @@ document.querySelectorAll('[data-copy]').forEach(btn => btn.addEventListener('cl
   setTimeout(() => { btn.textContent = 'Copiar'; }, 2000);
 }));
 
-/* Formularios: se envían con Netlify Forms. El correo de Claudia no aparece en la web. */
+/* Formularios: se envían con Web3Forms (web3forms.com), que los reenvía al correo de Claudia.
+   El correo no aparece en la web. */
 function asuntoDe(form) {
   const motivo = form.querySelector('[name="motivo"]');
   const base = motivo ? motivo.value : form.dataset.asunto;
@@ -51,12 +52,13 @@ document.querySelectorAll('.join-form').forEach(form => form.addEventListener('s
   if (asunto) asunto.value = asuntoDe(form);
   boton.disabled = true;
   try {
-    const res = await fetch('/', {
+    const res = await fetch(form.action, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(new FormData(form)).toString()
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
     });
-    if (!res.ok) throw new Error(res.status);
+    const datos = await res.json().catch(() => ({}));
+    if (!res.ok || datos.success === false) throw new Error(res.status);
     form.reset();
     ok.hidden = false;
   } catch (_) {

@@ -4,7 +4,7 @@
 Uso:  python3 build.py            -> crea la web en la carpeta _site/
       python3 build.py OTRA_CARPETA
 
-Solo usa la biblioteca estándar de Python (sin instalar nada). Netlify lo ejecuta
+Solo usa la biblioteca estándar de Python (sin instalar nada). GitHub lo ejecuta
 cada vez que se guarda un cambio desde el panel (/admin).
 """
 import html
@@ -151,6 +151,8 @@ CONTACTO = cargar("contacto")
 
 NOMBRE = AJUSTES.get("nombre", "")
 CORREO = AJUSTES.get("correo", "")
+# Clave pública de Web3Forms (web3forms.com): los mensajes de los formularios llegan al correo con el que se creó.
+CLAVE_FORMULARIOS = AJUSTES.get("clave_formularios", "")
 DESTACADO = next((l for l in LIBROS if l.get("destacado")), LIBROS[0] if LIBROS else None)
 ANTERIORES = [l for l in LIBROS if l is not DESTACADO]
 AVISO_TALLERES = bool(TALLERES.get("contenido_de_ejemplo"))
@@ -424,12 +426,14 @@ def campo(pre, id_, etiqueta, control):
 
 
 def formulario(id_, nombre_netlify, asunto, clase, titulo_tag, titulo, entrada, campos, boton, boton_clase, sent_extra):
-    """Formulario que llega por Netlify Forms (el correo de Claudia no se muestra en la web)."""
+    """Formulario que llega por correo a través de Web3Forms (el correo de Claudia no se muestra en la web)."""
     lead = '\n        <p class="join-form__lead">%s</p>' % inline(entrada) if entrada else ""
-    return """      <form id="{id}" name="{nombre}" class="{clase}" data-asunto="{asunto}" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-        <input type="hidden" name="form-name" value="{nombre}">
+    return """      <form id="{id}" name="{nombre}" class="{clase}" data-asunto="{asunto}" method="POST" action="https://api.web3forms.com/submit">
+        <input type="hidden" name="access_key" value="{clave}">
+        <input type="hidden" name="formulario" value="{nombre}">
         <input type="hidden" name="subject" value="{asunto}">
-        <p class="visually-hidden" aria-hidden="true"><label>No rellenar <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+        <input type="hidden" name="from_name" value="Web de {web}">
+        <p class="visually-hidden" aria-hidden="true"><label>No rellenar <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></label></p>
         <{tt}>{titulo}</{tt}>{lead}
 {campos}
         <button type="submit" class="{boton_clase}">{boton}</button>
@@ -438,6 +442,7 @@ def formulario(id_, nombre_netlify, asunto, clase, titulo_tag, titulo, entrada, 
         <p class="join-form__sent join-form__sent--error" role="status" hidden>No se ha podido enviar el mensaje. Comprueba tu conexión e inténtalo de nuevo en unos minutos.</p>
       </form>""".format(id=id_, nombre=nombre_netlify, clase=clase, asunto=esc(asunto), tt=titulo_tag, titulo=titulo,
                         lead=lead, campos="\n".join(campos), boton_clase=boton_clase, boton=boton,
+                        clave=esc(CLAVE_FORMULARIOS), web=esc(NOMBRE),
                         )
 
 
